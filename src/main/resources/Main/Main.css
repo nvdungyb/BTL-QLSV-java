@@ -1,0 +1,24 @@
+/* style.css */
+.selectable {
+    -fx-cursor: hand;
+}
+
+* {
+    -fx-pointer-events: none; /* Ngăn chọn tất cả các phần tử */
+}
+
+.button{
+    -fx-background-radius: 6px;
+    -fx-background-color:  white;
+}
+.button:hover{
+    -fx-background-color: #f6d4d7;
+}
+.button:pressed, .button:focused{
+    -fx-background-color: #E11D48;
+    -fx-text-fill: white;
+}
+.button:armed{
+    -fx-background-color: #E11D48;
+    -fx-text-fill: white;
+}

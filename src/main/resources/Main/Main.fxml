@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1285.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.MainController">
+   <content>
+      <VBox prefHeight="630.0" prefWidth="1280.0">
+         <children>
+            <AnchorPane prefHeight="40.0" prefWidth="1280.0" style="-fx-background-color: #881337;">
+               <children>
+                  <ImageView fitHeight="49.0" fitWidth="52.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Image/Logo.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="463.0" layoutY="1.0" prefHeight="36.0" prefWidth="367.0" text="HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <HBox prefWidth="1280.0" spacing="20.0" style="-fx-background-color: white;">
+               <children>
+                  <VBox prefHeight="598.0" prefWidth="223.0" spacing="10.0" style="-fx-background-color: white;">
+                     <children>
+                        <AnchorPane prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white;">
+                           <children>
+                              <ImageView fitHeight="105.0" fitWidth="101.0" layoutX="1.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label fx:id="UserName" layoutX="29.0" layoutY="112.0" prefHeight="24.0" prefWidth="137.0" text="userName" />
+                              <Label layoutX="111.0" layoutY="38.0" prefHeight="20.0" prefWidth="82.0" style="-fx-text-fill: #7F1D1D;" text="Khoa CNTT">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="111.0" layoutY="68.0" text="PTIT" textFill="#b72323" />
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </AnchorPane>
+                        <Line endX="100.0" endY="-1.112475037574768" startX="-100.0" stroke="#dddddd" strokeWidth="2.0">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Line>
+                        <VBox prefHeight="129.0" prefWidth="215.0" spacing="5.0">
+                           <children>
+                              <Button fx:id="trangchu" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#trangchuAction" prefHeight="45.0" prefWidth="220.0" styleClass="selectable" text="Trang Chủ" textFill="#b72323">
+                                 <font>
+                                    <Font name="#9Slide03 Open Sans SemiBold" size="16.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView cache="true" fitHeight="23.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/home.png" />
+                                       </image>
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="sinhvien" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="20.0" mnemonicParsing="false" onAction="#sinhvienAction" prefHeight="65.0" prefWidth="207.0" styleClass="selectable" text="Sinh Viên" textFill="#b72323">
+                                 <font>
+                                    <Font name="#9Slide03 Open Sans SemiBold" size="16.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView cache="true" fitHeight="27.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/home.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="nhantin" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="20.0" mnemonicParsing="false" onAction="#nhantinAction" prefHeight="40.0" prefWidth="220.0" styleClass="selectable" stylesheets="@Main.css" text="Nhắn Tin" textFill="#b72323">
+                                 <font>
+                                    <Font name="#9Slide03 Open Sans SemiBold" size="16.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView cache="true" fitHeight="27.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/home.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                        <VBox alignment="BOTTOM_CENTER" prefHeight="349.0" prefWidth="207.0" spacing="10.0" style="-fx-background-color: white;">
+                           <children>
+                              <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" styleClass="selectable" text="Giới Thiệu" textFill="#b72323">
+                                 <font>
+                                    <Font name="#9Slide03 Open Sans SemiBold" size="16.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView cache="true" fitHeight="27.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/home.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" styleClass="selectable" text="Hỗ Trợ" textFill="#b72323">
+                                 <font>
+                                    <Font name="#9Slide03 Open Sans SemiBold" size="16.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView cache="true" fitHeight="27.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/home.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="15.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="15.0" top="10.0" />
+                     </padding>
+                     <effect>
+                        <Blend />
+                     </effect>
+                  </VBox>
+                  <ScrollPane fx:id="container" hbarPolicy="NEVER" prefHeight="598.0" prefWidth="1040.0" stylesheets="@Main.css" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </content>
+</ScrollPane>

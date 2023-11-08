@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="481.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="33.0" prefWidth="600.0" style="-fx-background-color: white; -fx-border-color: rgba(229, 231, 235, 1);">
+         <children>
+            <Label layoutX="22.0" layoutY="11.0" text="Sinh Viên" textFill="#881337">
+               <font>
+                  <Font name="#9Slide03 Open Sans SemiBold" size="16.0" />
+               </font></Label>
+            <Button layoutX="940.0" layoutY="6.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-border-color: rgba(229, 231, 235, 1);" text="In danh sách" textFill="#881337" />
+         </children>
+      </AnchorPane>
+      <VBox prefWidth="100.0">
+         <children>
+            <AnchorPane prefHeight="38.0" prefWidth="1040.0">
+               <children>
+                  <AnchorPane layoutY="4.0" prefHeight="41.0" prefWidth="384.0">
+                     <children>
+                        <AnchorPane prefHeight="34.0" prefWidth="200.0" style="-fx-border-color: rgba(229, 231, 235, 1);">
+                           <children>
+                              <ImageView fitHeight="32.0" fitWidth="18.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/500px-Search_Icon.svg.png" />
+                                 </image>
+                              </ImageView>
+                              <TextField layoutX="24.0" layoutY="1.0" prefHeight="26.0" prefWidth="181.0" promptText="Tìm kiếm" style="-fx-background-color: white;" />
+                           </children>
+                        </AnchorPane>
+                        <ComboBox layoutX="259.0" layoutY="4.0" prefHeight="26.0" prefWidth="111.0" promptText="Lọc" style="-fx-background-color: white; -fx-border-color: rgba(229, 231, 235, 1);" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="682.0" layoutY="7.0" prefHeight="41.0" prefWidth="358.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="52.0" text="Thêm" />
+                        <ComboBox layoutX="80.0" prefHeight="26.0" prefWidth="93.0" promptText="Sắp xếp" style="-fx-background-color: white; -fx-border-color: rgba(229, 231, 235, 1);" />
+                        <Button layoutX="194.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" style="-fx-background-color: rgba(225, 29, 72, 1);" text="Sửa" textFill="#f7f0f0" />
+                        <Button layoutX="266.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="67.0" style="-fx-background-color: white; -fx-border-color: rgba(229, 231, 235, 1);" text="Xóa" />
+                     </children>
+                  </AnchorPane>
+                  <Button layoutX="413.0" layoutY="12.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" text="Tìm" />
+               </children>
+            </AnchorPane>
+            <TableView fx:id="table" fixedCellSize="0.0" prefWidth="1040.0">
+               <columns>
+                  <TableColumn fx:id="check" prefWidth="64.0">
+                     <graphic>
+                        <CheckBox fx:id="checkbox" mnemonicParsing="false" prefHeight="17.0" prefWidth="60.0" text="CheckBox" />
+                     </graphic>
+                  </TableColumn>
+                  <TableColumn fx:id="nameColumn" prefWidth="202.0" text="Họ và tên" />
+                  <TableColumn fx:id="dobColumn" prefWidth="184.66668701171875" text="Ngày sinh" />
+                  <TableColumn fx:id="queColumn" prefWidth="250.66665649414062" text="Quê quán" />
+                  <TableColumn fx:id="idColumn" prefWidth="172.66668701171875" text="Mã sinh viên" />
+                  <TableColumn fx:id="lopColumn" minWidth="6.4000244140625" prefWidth="160.666748046875" text="Lớp" />
+               </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
+</VBox>

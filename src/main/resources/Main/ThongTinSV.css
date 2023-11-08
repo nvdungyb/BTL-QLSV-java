@@ -1,0 +1,13 @@
+.thanh{
+    -fx-background-color: #881337;
+    -fx-background-radius: 20 20 6 6;
+}
+.label{
+    /* -fx-text-alignment: ; */
+}
+.table{
+   
+}
+.nen{
+    -fx-background-color: rgba(0, 0, 0, 0.7); /* Màu đen có độ trong suốt 0.7 */
+}

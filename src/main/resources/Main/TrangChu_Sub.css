@@ -1,0 +1,18 @@
+/* style.css */
+.selectable {
+    -fx-cursor: hand;
+}
+
+* {
+    -fx-pointer-events: none; /* Ngăn chọn tất cả các phần tử */
+}
+
+.trangchu{
+    -fx-background-color: white;
+}
+.label{
+    -fx-text-fill: #881337;
+}
+.test{
+    -fx-background-color: #dcdee4;
+}

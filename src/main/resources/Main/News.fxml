@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.NewsController">
+    <children>
+        <AnchorPane layoutX="66.0" layoutY="33.0" prefHeight="326.0" prefWidth="492.0">
+            <children>
+                <Label layoutX="14.0" layoutY="34.0" text="Nhập vào tiêu đề:" textFill="#881337">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="title" layoutX="160.0" layoutY="28.0" prefHeight="47.0" prefWidth="301.0" text="TextField">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </TextField>
+                <TextField fx:id="link" layoutX="160.0" layoutY="126.0" prefHeight="47.0" prefWidth="301.0" text="Đường dãn hiện ở đây." />
+                <Button fx:id="fileChooser" layoutX="14.0" layoutY="136.0" mnemonicParsing="false" text="FileChooser" textFill="#881337">
+                    <font>
+                        <Font size="13.0" />
+                    </font></Button>
+                <Button fx:id="submit" layoutX="352.0" layoutY="231.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="109.0" text="Submit" textFill="#881337">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Button>
+                <Label fx:id="warningLable" disable="true" layoutX="167.0" layoutY="203.0" prefHeight="17.0" prefWidth="164.0" text="Label" textFill="#881337" />
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

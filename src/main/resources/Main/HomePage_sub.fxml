@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefWidth="1040.0" spacing="10.0" style="-fx-background-color: #F3F4F6;" styleClass="GiaoDien" stylesheets="@TrangChu_Sub.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.HomePageController">
+    <children>
+        <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="20.0" prefWidth="600.0" style="-fx-background-color: #F3F4F6;">
+            <children>
+                <Label alignment="CENTER" layoutX="14.0" layoutY="10.0" text="Trang Chủ" textAlignment="CENTER" textFill="#871338">
+                    <font>
+                        <Font name="#9Slide03 Open Sans SemiBold" size="18.0" />
+                    </font>
+                </Label>
+                <Button fx:id="AddNews" layoutX="921.0" layoutY="6.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="105.0" text="Add News" textFill="#881337">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+            </children>
+            <padding>
+                <Insets bottom="4.0" top="4.0" />
+            </padding>
+        </AnchorPane>
+        <VBox prefWidth="600.0" spacing="10.0" style="-fx-background-color: #F3F4F6;">
+            <children>
+                <HBox prefHeight="37.0" prefWidth="1015.0" spacing="10.0" style="-fx-background-color: #F3F4F6;">
+                    <children>
+                        <AnchorPane layoutX="240.0" layoutY="69.0" prefHeight="409.0" prefWidth="730.0">
+                            <children>
+                                <AnchorPane fx:id="imagePane" prefHeight="315.0" prefWidth="730.0" style="-fx-background-color: white; -fx-background-radius: 6px;" styleClass="anchor_backround">
+                                    <children>
+                                        <Label alignment="TOP_LEFT" contentDisplay="TOP" prefHeight="64.0" prefWidth="730.0" text="Thông báo: Mở hệ thống cho sinh viên đăng ký thời khóa biểu các lớp học phần trong đợt học lớp riêng Học kỳ I – năm học 2023-2024" textFill="#881337" wrapText="true">
+                                            <font>
+                                                <Font size="20.0" />
+                                            </font>
+                                        </Label>
+                                        <ImageView fx:id="imageView" fitHeight="346.0" fitWidth="730.0" layoutX="6.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../Image/picture2.png" />
+                                            </image>
+                                        </ImageView>
+                                    </children>
+                                    <effect>
+                                        <DropShadow height="1.0" offsetX="1.0" offsetY="1.0" radius="0.0" width="1.0">
+                                            <color>
+                                                <Color opacity="0.18527919054031372" />
+                                            </color>
+                                        </DropShadow>
+                                    </effect>
+                                </AnchorPane>
+                                  <ScrollPane fx:id="NotificationPane" prefHeight="420.0" prefWidth="730.0" visible="false">
+                                      <content>
+                                          <Label fx:id="textNotification" prefHeight="417.0" prefWidth="731.0">
+                                              <font>
+                                                  <Font size="15.0" />
+                                              </font>
+                                          </Label>
+                                      </content>
+                                  </ScrollPane>
+                            </children>
+                        </AnchorPane>
+                        <VBox prefHeight="350.0" prefWidth="383.0" spacing="10.0" style="-fx-background-color: #F3F4F6;">
+                            <children>
+                                <Label prefHeight="37.0" prefWidth="389.0" style="-fx-background-color: #dcdee4; -fx-background-radius: 6px;" text="  Thông Báo">
+                                    <font>
+                                        <Font name="#9Slide03 Open Sans SemiBold" size="14.0" />
+                                    </font>
+                                </Label>
+<!--                                <ListView fx:id="Notification" fixedCellSize="4.0" prefHeight="378.0" prefWidth="302.0" style="-fx-background-radius: 6px;" />-->
+                                <ScrollPane layoutX="760.0" layoutY="65.0" prefHeight="420.0" prefWidth="439.0" style="-fx-background-radius: 6px;">
+                                    <content>
+                                        <VBox fx:id="Notification" prefHeight="408.0" prefWidth="268.0" style="-fx-background-radius: 6px;" />
+                                    </content>
+                                </ScrollPane>
+                            </children>
+                        </VBox>
+                    </children>
+                    <VBox.margin>
+                        <Insets left="5.0" />
+                    </VBox.margin>
+                </HBox>
+                <Label nodeOrientation="LEFT_TO_RIGHT" prefHeight="35.0" prefWidth="1020.0" style="-fx-background-color: #dcdee4; -fx-background-radius: 6px;" text="  Công Việc" textFill="#881337">
+                    <font>
+                        <Font name="#9Slide03 Open Sans SemiBold" size="14.0" />
+                    </font>
+                </Label>
+                <TableView fx:id="table" prefHeight="301.0" prefWidth="574.0" style="-fx-border-color: white; -fx-background-radius: 6px;">
+                    <columns>
+                        <TableColumn fx:id="cvColumn" prefWidth="196.79998779296875" style="-fx-background-color: white;" text="Công việc " />
+                        <TableColumn fx:id="ttColumn" prefWidth="210.4000244140625" style="-fx-background-color: white;" text="Trạng thái" />
+                        <TableColumn fx:id="dateColumn" prefWidth="610.0" style="-fx-background-color: white;" text="Ngày" />
+                    </columns>
+                </TableView>
+            </children>
+            <padding>
+                <Insets left="10.0" right="10.0" />
+            </padding>
+        </VBox>
+    </children>
+</VBox>

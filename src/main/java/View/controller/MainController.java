@@ -1,6 +1,5 @@
-package Main;
+package View.controller;
 
-import Main.LoginController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,9 +42,9 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            trangChuContent = FXMLLoader.load(getClass().getResource("HomePage_sub.fxml"));
-            sinhVienContent = FXMLLoader.load(getClass().getResource("sinhVien_sub.fxml"));
-            nhanTinContent = FXMLLoader.load(getClass().getResource("nhanTin_sub.fxml"));
+            trangChuContent = FXMLLoader.load(getClass().getResource("/Gui/HomePage_sub.fxml"));
+            sinhVienContent = FXMLLoader.load(getClass().getResource("/Gui/sinhVien_sub.fxml"));
+            nhanTinContent = FXMLLoader.load(getClass().getResource("/Gui/nhanTin_sub.fxml"));
             container.setContent(trangChuContent);
             String userName = LoginController.getUserName();
             UserName.setText(userName);

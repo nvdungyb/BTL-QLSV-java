@@ -1,4 +1,4 @@
-package Main;
+package View.data;
 
 public class NewsData {
     private String title, link;

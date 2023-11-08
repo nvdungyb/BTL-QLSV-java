@@ -1,8 +1,8 @@
-package Main;
+package View.data;
 
 public class SinhVien {
     private String maSv, tenSv, ngaySinh, gioiTinh, email, sdt, diaChi, maLop;
-    SinhVien(String maSv, String tenSv, String ngaySinh, String gioiTinh, String email, String sdt, String diaChi, String maLop){
+    public SinhVien(String maSv, String tenSv, String ngaySinh, String gioiTinh, String email, String sdt, String diaChi, String maLop){
         this.maSv = maSv;
         this.tenSv = tenSv;
         this.ngaySinh = ngaySinh;
@@ -44,5 +44,9 @@ public class SinhVien {
 
     public String getMaLop() {
         return maLop;
+    }
+
+    public String toString(){
+        return maSv + " " + tenSv + " " + ngaySinh + " " + gioiTinh + " " + email + " " + sdt + " " + diaChi + " " + maLop;
     }
 }

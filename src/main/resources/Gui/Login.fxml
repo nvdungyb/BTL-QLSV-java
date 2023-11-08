@@ -9,7 +9,7 @@
 
 <!-- Thêm các thành phần giao diện, bao gồm nút LoginButton -->
 
-<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.LoginController">  <!-- Thay thế bằng đường dẫn gói và tên lớp của lớp điều khiển -->
+<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.controller.LoginController">  <!-- Thay thế bằng đường dẫn gói và tên lớp của lớp điều khiển -->
 
     <children>
         <AnchorPane id="status" layoutX="400.0" layoutY="-3.0" prefHeight="607.0" prefWidth="402.0" styleClass="login-bg" stylesheets="@Login.css">

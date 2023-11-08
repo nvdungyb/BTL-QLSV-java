@@ -1,5 +1,6 @@
-package Main;
+package View.controller;
 
+import View.data.NewsData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

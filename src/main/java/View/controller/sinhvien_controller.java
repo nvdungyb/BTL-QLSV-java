@@ -1,5 +1,7 @@
-package Main;
+package View.controller;
 
+import View.database.ConnectDatabase;
+import View.data.SinhVien;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -13,7 +15,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -162,6 +163,14 @@ public class sinhvien_controller implements Initializable {
         }
     }
 
+    public void handleShow(ActionEvent event){
+        if(event.getSource() == tableShow){
+            SinhVien sv = (SinhVien) tableShow.getSelectionModel().getSelectedItem();
+            System.out.println(sv.getMaSv());
+            System.out.println(sv.getTenSv());
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if (search != null) {
@@ -171,5 +180,15 @@ public class sinhvien_controller implements Initializable {
         if (exporter != null) {
             exporter.setOnAction(this::handerExporter);
         }
+
+        if(tableShow != null){
+            tableShow.setOnMouseClicked(event ->{
+                SinhVien sv = (SinhVien) tableShow.getSelectionModel().getSelectedItem();
+                System.out.println(sv.getMaSv());
+                System.out.println(sv.getTenSv());
+                System.out.println(sv.getSdt());
+            });
+        }
+
     }
 }

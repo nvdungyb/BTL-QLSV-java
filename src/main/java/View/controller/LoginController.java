@@ -1,6 +1,6 @@
-package Main;
+package View.controller;
 
-import Main.ConnectDatabase;
+import View.database.ConnectDatabase;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -66,7 +66,7 @@ public class LoginController implements Initializable {
 
                     userNameLogin = name;
                     loginButton.getScene().getWindow().hide();
-                    Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
+                    Parent root = FXMLLoader.load(getClass().getResource("/Gui/Main.fxml"));
                     Scene scene = new Scene(root);
                     Stage stage = new Stage();
                     stage.setScene(scene);

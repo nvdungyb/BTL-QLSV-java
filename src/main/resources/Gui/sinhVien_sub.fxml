@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="481.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.sinhvien_controller">
+<VBox prefHeight="481.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.controller.sinhvien_controller">
    <children>
       <AnchorPane prefHeight="33.0" prefWidth="600.0" style="-fx-background-color: white; -fx-border-color: rgba(229, 231, 235, 1);">
          <children>

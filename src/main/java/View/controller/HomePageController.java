@@ -1,5 +1,6 @@
-package Main;
+package View.controller;
 
+import View.data.NewsData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -62,7 +63,7 @@ public class HomePageController implements Initializable {
             Scene scene = new Scene(new Pane());
 
             try {
-                scene.setRoot(FXMLLoader.load(getClass().getResource("News.fxml")));
+                scene.setRoot(FXMLLoader.load(getClass().getResource("/Gui/News.fxml")));
                 stage.setScene(scene);
                 stage.showAndWait();
 

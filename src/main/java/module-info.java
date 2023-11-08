@@ -5,6 +5,10 @@ module Main {
     requires poi;
     requires poi.ooxml;
 
-    opens Main to javafx.fxml;
-    exports Main;
+    exports View.controller;
+    opens View.controller to javafx.fxml;
+    exports View.database;
+    opens View.database to javafx.fxml;
+    exports View.data;
+    opens View.data to javafx.fxml;
 }

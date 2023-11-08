@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="481.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="481.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.sinhvien_controller">
    <children>
       <AnchorPane prefHeight="33.0" prefWidth="600.0" style="-fx-background-color: white; -fx-border-color: rgba(229, 231, 235, 1);">
          <children>
@@ -13,10 +15,10 @@
                <font>
                   <Font name="#9Slide03 Open Sans SemiBold" size="16.0" />
                </font></Label>
-            <Button layoutX="940.0" layoutY="6.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-border-color: rgba(229, 231, 235, 1);" text="In danh sách" textFill="#881337" />
+            <Button fx:id="exporter" layoutX="940.0" layoutY="6.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-border-color: rgba(229, 231, 235, 1);" text="In danh sách" textFill="#881337" />
          </children>
       </AnchorPane>
-      <VBox prefWidth="100.0">
+      <VBox prefWidth="1040.0">
          <children>
             <AnchorPane prefHeight="38.0" prefWidth="1040.0">
                <children>
@@ -29,10 +31,18 @@
                                     <Image url="@../Image/500px-Search_Icon.svg.png" />
                                  </image>
                               </ImageView>
-                              <TextField layoutX="24.0" layoutY="1.0" prefHeight="26.0" prefWidth="181.0" promptText="Tìm kiếm" style="-fx-background-color: white;" />
+                              <TextField fx:id="randomSearch" layoutX="24.0" layoutY="1.0" prefHeight="26.0" prefWidth="181.0" promptText="Tìm kiếm" style="-fx-background-color: white;" />
                            </children>
                         </AnchorPane>
-                        <ComboBox layoutX="259.0" layoutY="4.0" prefHeight="26.0" prefWidth="111.0" promptText="Lọc" style="-fx-background-color: white; -fx-border-color: rgba(229, 231, 235, 1);" />
+                        <ComboBox layoutX="259.0" layoutY="4.0" prefHeight="26.0" prefWidth="111.0" promptText="Lọc" style="-fx-background-color: white; -fx-border-color: rgba(229, 231, 235, 1);">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="Mục 1" />
+                                 <String fx:value="Mục 2" />
+                                 <String fx:value="Mục 3" />
+                              </FXCollections>
+                           </items>
+                        </ComboBox>
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="682.0" layoutY="7.0" prefHeight="41.0" prefWidth="358.0">
@@ -43,21 +53,21 @@
                         <Button layoutX="266.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="67.0" style="-fx-background-color: white; -fx-border-color: rgba(229, 231, 235, 1);" text="Xóa" />
                      </children>
                   </AnchorPane>
-                  <Button layoutX="413.0" layoutY="12.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" text="Tìm" />
+                  <Button fx:id="search" layoutX="413.0" layoutY="12.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" text="Tìm" />
                </children>
             </AnchorPane>
-            <TableView fx:id="table" fixedCellSize="0.0" prefWidth="1040.0">
+            <TableView fx:id="tableShow" fixedCellSize="0.0" prefHeight="395.0" prefWidth="579.0">
                <columns>
-                  <TableColumn fx:id="check" prefWidth="64.0">
+                  <TableColumn fx:id="check" prefWidth="99.0">
                      <graphic>
-                        <CheckBox fx:id="checkbox" mnemonicParsing="false" prefHeight="17.0" prefWidth="60.0" text="CheckBox" />
+                        <CheckBox fx:id="choose" mnemonicParsing="false" prefHeight="17.0" prefWidth="60.0" text="Chọn" />
                      </graphic>
                   </TableColumn>
-                  <TableColumn fx:id="nameColumn" prefWidth="202.0" text="Họ và tên" />
-                  <TableColumn fx:id="dobColumn" prefWidth="184.66668701171875" text="Ngày sinh" />
-                  <TableColumn fx:id="queColumn" prefWidth="250.66665649414062" text="Quê quán" />
-                  <TableColumn fx:id="idColumn" prefWidth="172.66668701171875" text="Mã sinh viên" />
-                  <TableColumn fx:id="lopColumn" minWidth="6.4000244140625" prefWidth="160.666748046875" text="Lớp" />
+                  <TableColumn fx:id="maSv" prefWidth="212.0" text="Mã sinh viên" />
+                  <TableColumn fx:id="tenSv" prefWidth="302.0" text="Họ và tên" />
+                  <TableColumn fx:id="lop" minWidth="6.4000244140625" prefWidth="142.0" text="Lớp" />
+                  <TableColumn fx:id="que" prefWidth="150.0" text="Quê quán" />
+                  <TableColumn fx:id="ngaySinh" prefWidth="134.0" text="Ngày sinh" />
                </columns>
             </TableView>
          </children>

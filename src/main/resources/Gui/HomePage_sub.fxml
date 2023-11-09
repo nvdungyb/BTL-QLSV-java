@@ -8,7 +8,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefWidth="1040.0" spacing="10.0" style="-fx-background-color: #F3F4F6;" styleClass="GiaoDien" stylesheets="@TrangChu_Sub.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.controller.HomePageController">
+<VBox prefWidth="1040.0" spacing="10.0" style="-fx-background-color: #F3F4F6;" styleClass="GiaoDien" stylesheets="@TrangChu_Sub.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manage.controller.HomePageController">
     <children>
         <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="20.0" prefWidth="600.0" style="-fx-background-color: #F3F4F6;">
             <children>

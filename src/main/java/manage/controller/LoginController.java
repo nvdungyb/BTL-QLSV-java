@@ -1,6 +1,6 @@
-package View.controller;
+package manage.controller;
 
-import View.database.ConnectDatabase;
+import manage.database.ConnectDatabase;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

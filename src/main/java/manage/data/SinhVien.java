@@ -1,9 +1,14 @@
-package View.data;
+package manage.data;
+
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ObservableValue;
 
 public class SinhVien {
     private String maSv, tenSv, ngaySinh, gioiTinh, email, sdt, diaChi, maLop;
-    private boolean checkBox;
-    public SinhVien(String maSv, String tenSv, String ngaySinh, String gioiTinh, String email, String sdt, String diaChi, String maLop){
+    private final SimpleBooleanProperty checkBox;
+
+    public SinhVien(String maSv, String tenSv, String ngaySinh, String gioiTinh, String email, String sdt, String diaChi, String maLop) {
         this.maSv = maSv;
         this.tenSv = tenSv;
         this.ngaySinh = ngaySinh;
@@ -12,8 +17,9 @@ public class SinhVien {
         this.sdt = sdt;
         this.diaChi = diaChi;
         this.maLop = maLop;
-        this.checkBox = false;
-    };
+        this.checkBox = new SimpleBooleanProperty(false);
+    }
+
 
     public String getMaSv() {
         return maSv;
@@ -47,11 +53,19 @@ public class SinhVien {
         return maLop;
     }
 
-    public Boolean getCheckBox(){
+    public SimpleBooleanProperty getCheckBox() {
         return checkBox;
     }
 
-    public String toString(){
+    public void setCheckBox(Boolean selected) {
+        this.checkBox.set(selected);
+    }
+
+    public String toString() {
         return maSv + " " + tenSv + " " + ngaySinh + " " + gioiTinh + " " + email + " " + sdt + " " + diaChi + " " + maLop;
     }
+
+//    public ObservableValue<Boolean> checkBoxProperty() {
+//        return checkBox;
+//    }
 }

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="481.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.controller.sinhvien_controller">
+<VBox prefHeight="481.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manage.controller.SinhVienController">
    <children>
       <AnchorPane prefHeight="33.0" prefWidth="600.0" style="-fx-background-color: white; -fx-border-color: rgba(229, 231, 235, 1);">
          <children>
@@ -47,21 +47,19 @@
                   </AnchorPane>
                   <AnchorPane layoutX="682.0" layoutY="7.0" prefHeight="41.0" prefWidth="358.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="52.0" text="Thêm" />
+                        <Button fx:id="add" mnemonicParsing="false" prefHeight="26.0" prefWidth="52.0" text="Thêm" />
                         <ComboBox layoutX="80.0" prefHeight="26.0" prefWidth="93.0" promptText="Sắp xếp" style="-fx-background-color: white; -fx-border-color: rgba(229, 231, 235, 1);" />
                         <Button layoutX="194.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" style="-fx-background-color: rgba(225, 29, 72, 1);" text="Sửa" textFill="#f7f0f0" />
                         <Button layoutX="266.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="67.0" style="-fx-background-color: white; -fx-border-color: rgba(229, 231, 235, 1);" text="Xóa" />
                      </children>
                   </AnchorPane>
                   <Button fx:id="search" layoutX="413.0" layoutY="12.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" text="Tìm" />
+                  <TextField fx:id="checkMaSv" layoutX="539.0" layoutY="12.0" prefHeight="25.0" prefWidth="123.0" />
                </children>
             </AnchorPane>
             <TableView fx:id="tableShow" fixedCellSize="0.0" prefHeight="395.0" prefWidth="579.0">
                <columns>
-                  <TableColumn fx:id="check" prefWidth="99.0">
-                     <graphic>
-                        <CheckBox fx:id="choose" mnemonicParsing="false" prefHeight="17.0" prefWidth="60.0" text="Chọn" />
-                     </graphic>
+                  <TableColumn fx:id="check" prefWidth="99.0" text="CheckBox">
                   </TableColumn>
                   <TableColumn fx:id="maSv" prefWidth="212.0" text="Mã sinh viên" />
                   <TableColumn fx:id="tenSv" prefWidth="302.0" text="Họ và tên" />

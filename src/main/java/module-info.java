@@ -4,11 +4,12 @@ module Main {
     requires java.sql;
     requires poi;
     requires poi.ooxml;
+    requires javafx.base;
 
-    exports View.controller;
-    opens View.controller to javafx.fxml;
-    exports View.database;
-    opens View.database to javafx.fxml;
-    exports View.data;
-    opens View.data to javafx.fxml;
+    exports manage.controller;
+    opens manage.controller to javafx.fxml;
+    exports manage.database;
+    opens manage.database to javafx.fxml;
+    exports manage.data;
+    opens manage.data to javafx.fxml;
 }

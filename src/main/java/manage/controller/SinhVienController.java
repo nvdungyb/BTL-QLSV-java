@@ -1,7 +1,8 @@
-package View.controller;
+package manage.controller;
 
-import View.database.ConnectDatabase;
-import View.data.SinhVien;
+import manage.database.ConnectDatabase;
+import manage.data.SinhVien;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -26,7 +27,7 @@ import java.util.ResourceBundle;
 
 public class sinhvien_controller implements Initializable {
     @FXML
-    private CheckBox choose;
+    private TableColumn<SinhVien, Boolean> check;
     @FXML
     private Button search;
     @FXML
@@ -85,7 +86,14 @@ public class sinhvien_controller implements Initializable {
                     }
                 }
 
-                // Tham số của PropertyValueFactory là của đối tượng SinhVien.
+                // Tham số của PropertyValueFactory là của thuộc tính của SinhVien và thuộc tính này có phương thức getter.
+                
+                // Thực hiện tạo ô chẹckBox cho mỗi hàng.
+                check.setCellValueFactory(new PropertyValueFactory<>("checkBox"));
+                check.setCellFactory((CheckBoxTableCell.forTableColumn(check)));
+                check.setEditable(true);
+
+
                 maSv.setCellValueFactory(new PropertyValueFactory<>("maSv"));
                 tenSv.setCellValueFactory(new PropertyValueFactory<>("tenSv"));
                 ngaySinh.setCellValueFactory(new PropertyValueFactory<>("ngaySinh"));

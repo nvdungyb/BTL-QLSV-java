@@ -2,6 +2,7 @@ package View.data;
 
 public class SinhVien {
     private String maSv, tenSv, ngaySinh, gioiTinh, email, sdt, diaChi, maLop;
+    private boolean checkBox;
     public SinhVien(String maSv, String tenSv, String ngaySinh, String gioiTinh, String email, String sdt, String diaChi, String maLop){
         this.maSv = maSv;
         this.tenSv = tenSv;
@@ -11,7 +12,7 @@ public class SinhVien {
         this.sdt = sdt;
         this.diaChi = diaChi;
         this.maLop = maLop;
-
+        this.checkBox = false;
     };
 
     public String getMaSv() {
@@ -44,6 +45,10 @@ public class SinhVien {
 
     public String getMaLop() {
         return maLop;
+    }
+
+    public Boolean getCheckBox(){
+        return checkBox;
     }
 
     public String toString(){

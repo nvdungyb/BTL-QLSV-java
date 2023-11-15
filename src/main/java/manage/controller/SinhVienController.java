@@ -2,6 +2,11 @@ package manage.controller;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import manage.data.HashMapStudent;
 import manage.database.ConnectDatabase;
 import manage.data.SinhVien;
 import javafx.scene.control.cell.CheckBoxTableCell;
@@ -18,6 +23,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -28,6 +34,7 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class SinhVienController implements Initializable {
+    HashMap<String, SinhVien> hashMapStudent;
     @FXML
     private TableColumn<SinhVien, Boolean> check;
     @FXML
@@ -51,7 +58,7 @@ public class SinhVienController implements Initializable {
     @FXML
     private Button add;
     @FXML
-    private TextField checkMaSv;
+    private Button addStudent;
 
     private ArrayList<SinhVien> ls = new ArrayList<>();
     private ArrayList<SinhVien> checked = new ArrayList<>();
@@ -65,64 +72,45 @@ public class SinhVienController implements Initializable {
 
     public void handleSearch(ActionEvent event) {
         if (event.getSource() == search) {
-            String WHERE = "";
-            String sql = "SELECT * FROM java_project.sinhvien" + WHERE;
-
             String random = randomSearch.getText().trim();
 
             ls.clear();
-            try {
-                Connection connection = ConnectDatabase.connect();
-                Statement statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery(sql);
+            hashMapStudent = HashMapStudent.getHashSinhVien();
 
-                while (resultSet.next()) {
-                    String maSv = resultSet.getString("id_sv");
-                    String tenSv = resultSet.getString("ten_sv");
-                    String ngaySinh = resultSet.getString("ngaysinh");
-                    String gioiTinh = resultSet.getString("gioitinh");
-                    String email = resultSet.getString("email");
-                    String sdt = resultSet.getString("sodt");
-                    String que = resultSet.getString("que");
-                    String lop = resultSet.getString("id_lhc");
+            for (String key : hashMapStudent.keySet()) {
+                SinhVien sv = hashMapStudent.get(key);
 
-                    SinhVien sv = new SinhVien(maSv, tenSv, ngaySinh, gioiTinh, email, sdt, que, lop);
-                    if (sv.getMaSv().contains(random) || sv.getTenSv().contains(random) || sv.getNgaySinh().contains(random) || sv.getGioiTinh().contains(random) || sv.getEmail().contains(random) || sv.getSdt().contains(random) || sv.getDiaChi().contains(random) || sv.getMaLop().contains(random)) {
-                        map.put(maSv, sv);
-                        ls.add(sv);
-                    }
+                if (sv.getMaSv().contains(random) || sv.getTenSv().contains(random) || sv.getNgaySinh().contains(random) || sv.getGioiTinh().contains(random) || sv.getEmail().contains(random) || sv.getSdt().contains(random) || sv.getDiaChi().contains(random) || sv.getMaLop().contains(random)) {
+                    ls.add(sv);
                 }
+            }
 
-                // Tham số của PropertyValueFactory là của thuộc tính của SinhVien và thuộc tính này có phương thức getter.
-                // Thực hiện tạo ô chẹckBox cho mỗi hàng.
-                check.setCellValueFactory(new PropertyValueFactory<>("checkBox"));
-                check.setCellFactory((TableColumn<SinhVien, Boolean> p) -> {                                            // Phương thức setCellFactory để tạo các ô cho cột, cụ thể là cột check. Trong phương thức biểu thức lamda nhận một tableColumn và trả về một TableCell.
-                    CheckBoxTableCell<SinhVien, Boolean> cell = new CheckBoxTableCell<>();                              // Tạo một ô checkBox mới cho mỗi hàng.
-                    cell.setSelectedStateCallback(param -> {                                                            // Đặt trạng thái của ô checkBox cho mỗi hàng. Biểu thức lamda đặt một hàm gọi lại để xác định trạng thái được chọn của ô checkBox, hàm này gọi lại mỗi khi trạng thái của ô checkBox thay đổi.
-                        SinhVien sv = cell.getTableRow().getItem();                                                     // Lấy đối tượng SinhVien được liên kết với dòng hiện tại.
-                        return sv != null ? sv.getCheckBox() : null;                                                    // Trả về thuộc tính checkBox của đối tượng SinhVien.
-                    });
-                    return cell;
+            // Tham số của PropertyValueFactory là của thuộc tính của SinhVien và thuộc tính này có phương thức getter.
+            // Thực hiện tạo ô chẹckBox cho mỗi hàng.
+            check.setCellValueFactory(new PropertyValueFactory<>("checkBox"));
+            check.setCellFactory((TableColumn<SinhVien, Boolean> p) -> {                                            // Phương thức setCellFactory để tạo các ô cho cột, cụ thể là cột check. Trong phương thức biểu thức lamda nhận một tableColumn và trả về một TableCell.
+                CheckBoxTableCell<SinhVien, Boolean> cell = new CheckBoxTableCell<>();                              // Tạo một ô checkBox mới cho mỗi hàng.
+                cell.setSelectedStateCallback(param -> {                                                            // Đặt trạng thái của ô checkBox cho mỗi hàng. Biểu thức lamda đặt một hàm gọi lại để xác định trạng thái được chọn của ô checkBox, hàm này gọi lại mỗi khi trạng thái của ô checkBox thay đổi.
+                    SinhVien sv = cell.getTableRow().getItem();                                                     // Lấy đối tượng SinhVien được liên kết với dòng hiện tại.
+                    return sv != null ? sv.getCheckBox() : null;                                                    // Trả về thuộc tính checkBox của đối tượng SinhVien.
                 });
-                check.setEditable(true);
+                return cell;
+            });
+            check.setEditable(true);
 //                                                                                                                      Tại sao dùng cách này thì không được?
 //                check.setCellValueFactory(new PropertyValueFactory<>("checkBox"));
 //                check.setCellFactory((CheckBoxTableCell.forTableColumn(check)));                                                                                                                                                                                                                                          Ta
 //                check.setEditable(true);
 
-                maSv.setCellValueFactory(new PropertyValueFactory<>("maSv"));
-                tenSv.setCellValueFactory(new PropertyValueFactory<>("tenSv"));
-                ngaySinh.setCellValueFactory(new PropertyValueFactory<>("ngaySinh"));
-                que.setCellValueFactory(new PropertyValueFactory<>("diaChi"));
-                lop.setCellValueFactory(new PropertyValueFactory<>("maLop"));
+            maSv.setCellValueFactory(new PropertyValueFactory<>("maSv"));
+            tenSv.setCellValueFactory(new PropertyValueFactory<>("tenSv"));
+            ngaySinh.setCellValueFactory(new PropertyValueFactory<>("ngaySinh"));
+            que.setCellValueFactory(new PropertyValueFactory<>("diaChi"));
+            lop.setCellValueFactory(new PropertyValueFactory<>("maLop"));
 
-                ObservableList<SinhVien> data = FXCollections.observableArrayList(ls);
-                tableShow.setItems(data);
-                tableShow.setEditable(true);
-
-            } catch (SQLException e) {
-                System.out.println(e.getMessage());
-            }
+            ObservableList<SinhVien> data = FXCollections.observableArrayList(ls);
+            tableShow.setItems(data);
+            tableShow.setEditable(true);
         }
     }
 
@@ -222,16 +210,6 @@ public class SinhVienController implements Initializable {
 
         if (tableShow != null) {
             tableShow.setOnMouseClicked(event -> {
-//                SinhVien sv = (SinhVien) tableShow.getSelectionModel().getSelectedItem();
-//                System.out.println(sv.getMaSv() + " " + sv.getTenSv() + " " + sv.getCheckBox());
-//                sv.setCheckBox(true);
-//                System.out.println(sv.getMaSv() + " " + sv.getTenSv() + " " + sv.getCheckBox());
-//
-//                BooleanProperty currStatus = sv.getCheckBox();
-//                sv.setCheckBox(!currStatus.get());
-//
-//                System.out.println(sv.getMaSv() + " " + sv.getTenSv() + " " + sv.getCheckBox());
-
                 if (event.getClickCount() == 1) {
                     SinhVien sv = (SinhVien) tableShow.getSelectionModel().getSelectedItem();
                     SimpleBooleanProperty currStatus = sv.getCheckBox();
@@ -242,8 +220,18 @@ public class SinhVienController implements Initializable {
             });
         }
 
-        if (add != null) {
-//            add.setOnAction(this::handleCheck);
+        if (addStudent != null) {
+            addStudent.setOnAction(event -> {
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("/Gui/ThemSinhVien.fxml"));
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
         }
     }
 }

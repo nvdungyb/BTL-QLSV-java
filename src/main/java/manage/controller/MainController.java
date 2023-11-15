@@ -7,9 +7,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
+import manage.data.HashMapStudent;
+import manage.data.SinhVien;
+import manage.database.ConnectDatabase;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
@@ -23,6 +29,7 @@ public class MainController implements Initializable {
     ScrollPane container;
     @FXML
     private Label UserName;
+    HashMapStudent hashMapStudent;
 
     @FXML
     public void trangchuAction(ActionEvent event) throws IOException {
@@ -48,7 +55,29 @@ public class MainController implements Initializable {
             container.setContent(trangChuContent);
             String userName = LoginController.getUserName();
             UserName.setText(userName);
+
+            ConnectDatabase con = new ConnectDatabase();
+            Statement statement = con.connect().createStatement();
+            String sql = "SELECT * FROM java_project.sinhvien;";
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            while (resultSet.next()) {
+                String maSv = resultSet.getString("id_sv");
+                String tenSv = resultSet.getString("ten_sv");
+                String ngaySinh = resultSet.getString("ngaysinh");
+                String gioiTinh = resultSet.getString("gioitinh");
+                String email = resultSet.getString("email");
+                String sdt = resultSet.getString("sodt");
+                String que = resultSet.getString("que");
+                String lop = resultSet.getString("id_lhc");
+
+                SinhVien sv = new SinhVien(maSv, tenSv, ngaySinh, gioiTinh, email, sdt, que, lop);
+                hashMapStudent.addStudent(maSv, sv);
+            }
+
         } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }

@@ -23,9 +23,9 @@ import java.sql.ResultSet;
 
 public class LoginController implements Initializable {
     @FXML
-    private PasswordField password;
+    private PasswordField Password;
     @FXML
-    public TextField userName;
+    public TextField UserName;
     @FXML
     private Button loginButton;
     @FXML
@@ -46,8 +46,8 @@ public class LoginController implements Initializable {
     }
 
     public void checkInfo() {
-        String name = userName.getText().trim();
-        String pass = password.getText().trim();
+        String name = UserName.getText().trim();
+        String pass = Password.getText().trim();
 
         if (name.equals("") || pass.equals("")) {
             status.setText("Vui lòng nhập đầy đủ thông tin!");

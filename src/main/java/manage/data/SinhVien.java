@@ -20,7 +20,6 @@ public class SinhVien {
         this.checkBox = new SimpleBooleanProperty(false);
     }
 
-
     public String getMaSv() {
         return maSv;
     }

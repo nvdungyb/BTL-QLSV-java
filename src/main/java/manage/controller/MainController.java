@@ -16,6 +16,7 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
@@ -29,7 +30,8 @@ public class MainController implements Initializable {
     ScrollPane container;
     @FXML
     private Label UserName;
-    HashMapStudent hashMapStudent;
+
+    HashMap<String, SinhVien> hashMapStudent = HashMapStudent.getHashSinhVien();
 
     @FXML
     public void trangchuAction(ActionEvent event) throws IOException {
@@ -72,7 +74,7 @@ public class MainController implements Initializable {
                 String lop = resultSet.getString("id_lhc");
 
                 SinhVien sv = new SinhVien(maSv, tenSv, ngaySinh, gioiTinh, email, sdt, que, lop);
-                hashMapStudent.addStudent(maSv, sv);
+                hashMapStudent.put(maSv, sv);
             }
 
         } catch (IOException e) {

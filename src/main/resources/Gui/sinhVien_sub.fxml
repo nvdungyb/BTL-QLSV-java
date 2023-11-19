@@ -16,6 +16,11 @@
                   <Font name="#9Slide03 Open Sans SemiBold" size="16.0" />
                </font></Label>
             <Button fx:id="exporter" layoutX="940.0" layoutY="6.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-border-color: rgba(229, 231, 235, 1);" text="In danh sách" textFill="#881337" />
+            <Label fx:id="warning" layoutX="563.0" layoutY="4.0" prefHeight="27.0" prefWidth="252.0" textAlignment="CENTER" textFill="RED">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <VBox prefWidth="1040.0">
@@ -47,13 +52,13 @@
                   </AnchorPane>
                   <AnchorPane layoutX="682.0" layoutY="7.0" prefHeight="41.0" prefWidth="358.0">
                      <children>
-                        <Button fx:id="addStudent" mnemonicParsing="false" prefHeight="26.0" prefWidth="52.0" text="Thêm" />
-                        <Button layoutX="194.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" style="-fx-background-color: rgba(225, 29, 72, 1);" text="Sửa" textFill="#f7f0f0" />
+                        <Button fx:id="addStudent" mnemonicParsing="false" prefHeight="26.0" prefWidth="52.0" style="-fx-background-color: rgba(225, 29, 72, 1);" text="Thêm" textFill="WHITE" />
+                        <Button fx:id="sua" layoutX="194.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" style="-fx-background-color: rgba(225, 29, 72, 1);" text="Sửa" textFill="#f7f0f0" />
                         <Button fx:id="delete" layoutX="275.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" stylesheets="@them_sua.css" text="Xóa" textFill="WHITE" />
-                        <Button fx:id="sapXep" layoutX="95.0" layoutY="1.0" mnemonicParsing="false" text="Sắp xếp" />
+                        <Button fx:id="sapXep" layoutX="95.0" layoutY="1.0" mnemonicParsing="false" style="-fx-background-color: rgba(225, 29, 72, 1);" text="Sắp xếp" textFill="WHITE" />
                      </children>
                   </AnchorPane>
-                  <Button fx:id="search" layoutX="413.0" layoutY="12.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" text="Tìm" />
+                  <Button fx:id="search" layoutX="413.0" layoutY="12.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" style="-fx-background-color: rgba(225, 29, 72, 1);" text="Tìm" textFill="WHITE" />
                </children>
             </AnchorPane>
             <TableView fx:id="tableShow" fixedCellSize="0.0" prefHeight="395.0" prefWidth="579.0">

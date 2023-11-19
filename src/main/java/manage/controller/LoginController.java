@@ -90,6 +90,12 @@ public class LoginController implements Initializable {
         if (event.getSource() == loginButton) {
             System.out.println("Login button clicked!");
             checkInfo();
+
+            try {
+                connection.close();
+            }catch(Exception e){
+                e.printStackTrace();
+            }
         }
     }
 

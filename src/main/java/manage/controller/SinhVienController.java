@@ -1,11 +1,13 @@
 package manage.controller;
 
+import javafx.animation.PauseTransition;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import manage.data.HashMapStudent;
 import manage.data.SinhVien;
 import javafx.scene.control.cell.CheckBoxTableCell;
@@ -51,31 +53,41 @@ public class SinhVienController implements Initializable {
     @FXML
     private Button exporter;
     @FXML
-    private Button add;
-
+    private Button sua;
     @FXML
     private Button addStudent;
     @FXML
     private Button delete;
     @FXML
     private Button sapXep;
-
+    @FXML
+    private Label warning;
 
     // static: thuộc tính của class, được chia sẻ cho tất cả các đối tượng của class.
     // final : thuộc tính của đối tượng, không thể thay đổi giá trị của thuộc tính này.
     // BooleanProperty: là lớp đại diện cho một giá trị boolean có thể thay đổi được trong javaFx.
     // BooleanProperty sẽ tự động gọi đến các hàm listener đã đk khi giá trị của nó bị thay đổi => update UI một cách tự động.
     private static BooleanProperty isDataChanged = new SimpleBooleanProperty(false);
+    private static SinhVien changeInforSv = null;
 
     private ArrayList<SinhVien> ls = new ArrayList<>();
     private ArrayList<SinhVien> checked = new ArrayList<>();
     HashMap<String, SinhVien> map = new HashMap<>();
+
 //    @FXML
 //    private TableColumn<SinhVien, String> gioiTinh;
 //    @FXML
 //    private TableColumn<SinhVien, String> email;
 //    @FXML
 //    private TableColumn<SinhVien, String> sdt;
+
+    public void warningPause() {
+        PauseTransition delay = new PauseTransition(Duration.seconds(3));
+        delay.setOnFinished(even -> {
+            warning.setText("");
+        });
+        delay.play();
+    }
 
     public void handleSearch(ActionEvent event) {
 
@@ -105,7 +117,6 @@ public class SinhVienController implements Initializable {
         });
         check.setEditable(true);
 
-
         maSv.setCellValueFactory(new PropertyValueFactory<>("maSv"));
         tenSv.setCellValueFactory(new PropertyValueFactory<>("tenSv"));
         ngaySinh.setCellValueFactory(new PropertyValueFactory<>("ngaySinh"));
@@ -118,9 +129,9 @@ public class SinhVienController implements Initializable {
         tableShow.refresh();
     }
 
-    public void handleSort(ActionEvent event){
-        if(event.getSource() == sapXep){
-            ls.sort((SinhVien sv1, SinhVien sv2) ->{
+    public void handleSort(ActionEvent event) {
+        if (event.getSource() == sapXep) {
+            ls.sort((SinhVien sv1, SinhVien sv2) -> {
                 return sv1.getMaSv().compareTo(sv2.getMaSv());
             });
 
@@ -131,7 +142,7 @@ public class SinhVienController implements Initializable {
         }
     }
 
-    public void handerExporter(ActionEvent event) {
+    public void handlerExporter(ActionEvent event) {
         if (event.getSource() == exporter) {
 
             Workbook workbook = new XSSFWorkbook();
@@ -208,8 +219,59 @@ public class SinhVienController implements Initializable {
         }
     }
 
+    public void handleChangeInfor(ActionEvent event) {
+        if (event.getSource() == sua) {
+            boolean ok = true;
+            int numStudent = 0;
+            for (String x : hashMapStudent.keySet()) {
+                SinhVien sv = hashMapStudent.get(x);
+                if (sv.getCheckBox().getValue() == true) {
+                    numStudent++;
+                    if (changeInforSv == null) {
+                        changeInforSv = sv;
+                    } else {
+                        changeInforSv = null;
+                        break;
+                    }
+                }
+            }
+
+            if (changeInforSv == null) {
+                if (numStudent > 1) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setHeaderText(null);
+                    alert.setContentText("Chỉ chọn 1 sinh viên để sửa thông tin!");
+                    alert.showAndWait();
+                } else if (numStudent == 0) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setHeaderText(null);
+                    alert.setContentText("Chưa chọn sinh viên để sửa thông tin!");
+                    alert.showAndWait();
+                }
+            }
+
+            if (numStudent == 1 && changeInforSv != null) {
+                try {
+                    Stage stage = new Stage();
+                    Parent root = FXMLLoader.load(getClass().getResource("/Gui/SuaThongTin.fxml"));
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            changeInforSv = null;
+        }
+    }
+
     public static void setIsChange(boolean check) {
         isDataChanged.set(check);
+    }
+
+    public static SinhVien getChangeInforSv() {
+        return changeInforSv;
     }
 
     @Override
@@ -219,7 +281,7 @@ public class SinhVienController implements Initializable {
         }
 
         if (exporter != null) {
-            exporter.setOnAction(this::handerExporter);
+            exporter.setOnAction(this::handlerExporter);
         }
 
         if (tableShow != null) {
@@ -252,7 +314,7 @@ public class SinhVienController implements Initializable {
             delete.setOnAction(this::handleDelete);
         }
 
-        if(sapXep != null){
+        if (sapXep != null) {
             sapXep.setOnAction(this::handleSort);
         }
 
@@ -268,5 +330,9 @@ public class SinhVienController implements Initializable {
                 isDataChanged.set(false);
             }
         });
+
+        if (sua != null) {
+            sua.setOnAction(this::handleChangeInfor);
+        }
     }
 }

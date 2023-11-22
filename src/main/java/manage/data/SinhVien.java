@@ -1,8 +1,8 @@
 package manage.data;
 
-import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.value.ObservableValue;
+
+import java.time.LocalDate;
 
 public class SinhVien {
     private String maSv, tenSv, ngaySinh, gioiTinh, email, sdt, diaChi, maLop;

@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="481.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manage.controller.SinhVienController">
+<VBox prefHeight="643.0" prefWidth="1082.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manage.controller.SinhVienController">
    <children>
-      <AnchorPane prefHeight="33.0" prefWidth="600.0" style="-fx-background-color: white; -fx-border-color: rgba(229, 231, 235, 1);">
+      <AnchorPane prefHeight="38.0" prefWidth="1053.0" style="-fx-background-color: white; -fx-border-color: rgba(229, 231, 235, 1);">
          <children>
             <Label layoutX="22.0" layoutY="11.0" text="Sinh Viên" textFill="#881337">
                <font>
@@ -23,7 +23,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <VBox prefWidth="1040.0">
+      <VBox prefHeight="609.0" prefWidth="1040.0">
          <children>
             <AnchorPane prefHeight="38.0" prefWidth="1040.0">
                <children>
@@ -59,9 +59,10 @@
                      </children>
                   </AnchorPane>
                   <Button fx:id="search" layoutX="413.0" layoutY="12.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" style="-fx-background-color: rgba(225, 29, 72, 1);" text="Tìm" textFill="WHITE" />
+                  <Button fx:id="hienThi" layoutX="547.0" layoutY="12.0" mnemonicParsing="false" text="Hiển thị" />
                </children>
             </AnchorPane>
-            <TableView fx:id="tableShow" fixedCellSize="0.0" prefHeight="395.0" prefWidth="579.0">
+            <TableView fx:id="tableShow" fixedCellSize="0.0" prefHeight="557.0" prefWidth="1300.0">
                <columns>
                   <TableColumn fx:id="check" prefWidth="99.0" text="CheckBox">
                   </TableColumn>

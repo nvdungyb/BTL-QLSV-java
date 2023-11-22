@@ -84,15 +84,7 @@ public class ChangeInforController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        HashMap<String, SinhVien> hashMapStudent = HashMapStudent.getHashSinhVien();
-        SinhVien svChange = null;
-        for (String x : hashMapStudent.keySet()) {
-            SinhVien sv = hashMapStudent.get(x);
-            if (sv.getCheckBox().getValue()) {
-                svChange = sv;
-                break;
-            }
-        }
+        SinhVien svChange = SinhVienController.getInforSv();
 
         if (svChange != null) {
             maSv.setText(svChange.getMaSv());

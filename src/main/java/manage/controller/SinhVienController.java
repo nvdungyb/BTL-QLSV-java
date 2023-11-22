@@ -68,11 +68,14 @@ public class SinhVienController implements Initializable {
     // BooleanProperty: là lớp đại diện cho một giá trị boolean có thể thay đổi được trong javaFx.
     // BooleanProperty sẽ tự động gọi đến các hàm listener đã đk khi giá trị của nó bị thay đổi => update UI một cách tự động.
     private static BooleanProperty isDataChanged = new SimpleBooleanProperty(false);
-    private static SinhVien changeInforSv = null;
+    private static SinhVien inforSv = null;
 
     private ArrayList<SinhVien> ls = new ArrayList<>();
     private ArrayList<SinhVien> checked = new ArrayList<>();
     HashMap<String, SinhVien> map = new HashMap<>();
+
+    @FXML
+    private Button hienThi;
 
 //    @FXML
 //    private TableColumn<SinhVien, String> gioiTinh;
@@ -227,16 +230,16 @@ public class SinhVienController implements Initializable {
                 SinhVien sv = hashMapStudent.get(x);
                 if (sv.getCheckBox().getValue() == true) {
                     numStudent++;
-                    if (changeInforSv == null) {
-                        changeInforSv = sv;
+                    if (inforSv == null) {
+                        inforSv = sv;
                     } else {
-                        changeInforSv = null;
+                        inforSv = null;
                         break;
                     }
                 }
             }
 
-            if (changeInforSv == null) {
+            if (inforSv == null) {
                 if (numStudent > 1) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setHeaderText(null);
@@ -250,7 +253,7 @@ public class SinhVienController implements Initializable {
                 }
             }
 
-            if (numStudent == 1 && changeInforSv != null) {
+            if (numStudent == 1 && inforSv != null) {
                 try {
                     Stage stage = new Stage();
                     Parent root = FXMLLoader.load(getClass().getResource("/Gui/SuaThongTin.fxml"));
@@ -262,7 +265,54 @@ public class SinhVienController implements Initializable {
                 }
             }
 
-            changeInforSv = null;
+            inforSv = null;
+        }
+    }
+
+    public void handleShowInfor(ActionEvent event) {
+        if (event.getSource() == hienThi) {
+            boolean ok = true;
+            int numStudent = 0;
+            for (String x : hashMapStudent.keySet()) {
+                SinhVien sv = hashMapStudent.get(x);
+                if (sv.getCheckBox().getValue() == true) {
+                    numStudent++;
+                    if (inforSv == null) {
+                        inforSv = sv;
+                    } else {
+                        inforSv = null;
+                        break;
+                    }
+                }
+            }
+
+            if (inforSv == null) {
+                if (numStudent > 1) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setHeaderText(null);
+                    alert.setContentText("Chỉ chọn 1 sinh viên để xem thông tin!");
+                    alert.showAndWait();
+                } else if (numStudent == 0) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setHeaderText(null);
+                    alert.setContentText("Chưa chọn sinh viên để xem thông tin!");
+                    alert.showAndWait();
+                }
+            }
+
+            if (numStudent == 1 && inforSv != null) {
+                try {
+                    Stage stage = new Stage();
+                    Parent root = FXMLLoader.load(getClass().getResource("/Gui/StudentInfor.fxml"));
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            inforSv = null;
         }
     }
 
@@ -270,8 +320,8 @@ public class SinhVienController implements Initializable {
         isDataChanged.set(check);
     }
 
-    public static SinhVien getChangeInforSv() {
-        return changeInforSv;
+    public static SinhVien getInforSv() {
+        return inforSv;
     }
 
     @Override
@@ -333,6 +383,10 @@ public class SinhVienController implements Initializable {
 
         if (sua != null) {
             sua.setOnAction(this::handleChangeInfor);
+        }
+
+        if (hienThi != null) {
+            hienThi.setOnAction(this::handleShowInfor);
         }
     }
 }

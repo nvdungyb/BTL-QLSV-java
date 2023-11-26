@@ -13,7 +13,6 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.time.LocalDate;
-import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class ChangeInforController implements Initializable {
@@ -40,9 +39,8 @@ public class ChangeInforController implements Initializable {
     @FXML
     private Button huy;
 
-
-    public void handleLuu(ActionEvent event){
-        if(event.getSource() == luu){
+    public void handleLuu(ActionEvent event) {
+        if (event.getSource() == luu) {
             String name = tenSv.getText().trim();
             String id_sv = maSv.getText().trim();
             String address = diaChi.getText().trim();
@@ -53,12 +51,22 @@ public class ChangeInforController implements Initializable {
             String class_id = lop.getText().trim();
 //            String faculty = khoa.getValue().toString();
 
-            if(name.equals("") || id_sv.equals("") || address.equals("") || mail.equals("") || phone.equals("") || dob.equals("") || gender.equals("") || class_id.equals("")) {
+            if (name.equals("") || id_sv.equals("") || address.equals("") || mail.equals("") || phone.equals("") || dob.equals("") || gender.equals("") || class_id.equals("")) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText(null);
                 alert.setContentText("Vui lòng nhập đầy đủ thông tin!");
                 alert.showAndWait();
-            }else{
+            } else if (Validation.EmailValidate(mail) == false) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setContentText("Email không hợp lệ!");
+                alert.showAndWait();
+            } else if (Validation.PhoneValidate(phone) == false) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setContentText("Số điện thoại không hợp lệ!");
+                alert.showAndWait();
+            } else {
                 String sql = "UPDATE java_project.sinhvien SET ten_sv = '" + name + "', ngaysinh = '" + dob + "', que = '" + address + "', email = '" + mail + "', gioitinh = '" + gender + "', sodt = '" + phone + "', id_lhc = '" + class_id + "' WHERE id_sv = '" + id_sv + "'";
                 System.out.println(sql);
                 try {
@@ -74,7 +82,7 @@ public class ChangeInforController implements Initializable {
 
                     Stage stage = (Stage) luu.getScene().getWindow();
                     stage.close();
-                }catch(Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -97,14 +105,14 @@ public class ChangeInforController implements Initializable {
             lop.setText(svChange.getMaLop());
         }
 
-        if(luu != null){
+        if (luu != null) {
             luu.setOnAction(this::handleLuu);
         }
 
-        if(huy != null){
-            huy.setOnAction(event ->{
-               Stage stage = (Stage) huy.getScene().getWindow();
-               stage.close();
+        if (huy != null) {
+            huy.setOnAction(event -> {
+                Stage stage = (Stage) huy.getScene().getWindow();
+                stage.close();
             });
         }
     }

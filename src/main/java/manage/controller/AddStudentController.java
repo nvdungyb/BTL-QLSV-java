@@ -15,8 +15,6 @@ import java.net.URL;
 import java.sql.Statement;
 import java.util.HashMap;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class AddStudentController implements Initializable {
     HashMap<String, SinhVien> hashMapStudent;
@@ -79,6 +77,12 @@ public class AddStudentController implements Initializable {
                 if (name.equals("") || id.equals("") || gender.equals("") || phone.equals("") || address.equals("") || classId.equals("") || faculty.equals("") || dob.equals("") || mail.equals("")) {
                     status.setText("Vui lòng nhập đầy đủ thông tin!");
                     statusPause();
+                } else if (Validation.EmailValidate(mail)) {
+                    status.setText("Email không hợp lệ!");
+                    statusPause();
+                } else if (Validation.EmailValidate(phone)) {
+                    status.setText("Số điện thoại không hợp lệ!");
+                    statusPause();
                 } else {
                     if (hashMapStudent.containsKey(id)) {
                         status.setText("Mã sinh viên đã tồn tại");
@@ -116,7 +120,6 @@ public class AddStudentController implements Initializable {
                 Stage stage = (Stage) huy.getScene().getWindow();
                 stage.close();
             });
-
         }
     }
 }

@@ -1,14 +1,16 @@
 package manage.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import manage.data.CongViec;
 import manage.data.NewsData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -18,6 +20,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
@@ -34,6 +37,16 @@ public class HomePageController implements Initializable {
     private Label textNotification;
     @FXML
     private ImageView imageView;
+    @FXML
+    private Button themCv;
+    @FXML
+    private TableView workTable;
+    @FXML
+    private TableColumn<CongViec, String> cvColumn;
+    @FXML
+    private TableColumn<CongViec, String> ttColumn;
+    @FXML
+    private TableColumn<CongViec, String> dateColumn;
 
     public void hanlderShowNews(ActionEvent event) {
         if (event.getSource() instanceof Button) {
@@ -97,10 +110,40 @@ public class HomePageController implements Initializable {
         }
     }
 
+    public void hanlderAddCV(ActionEvent event) {
+        if (event.getSource() == themCv) {
+            Stage stage = new Stage();
+            Scene scene = new Scene(new Pane());
+
+            try {
+                scene.setRoot(FXMLLoader.load(getClass().getResource("/Gui/Work.fxml")));
+                stage.setScene(scene);
+                stage.showAndWait();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            cvColumn.setCellValueFactory(new PropertyValueFactory("moTa"));
+            ttColumn.setCellValueFactory(new PropertyValueFactory("trangThai"));
+            dateColumn.setCellValueFactory(new PropertyValueFactory("ngayThang"));
+
+            ArrayList<CongViec> lsCongViec = CongViecController.getLsCongViec();
+            ObservableList<CongViec> list = FXCollections.observableArrayList(lsCongViec);
+            workTable.setItems(list);
+            workTable.refresh();
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         if (AddNews != null) {
             AddNews.setOnAction(this::hanlderAddNews);
         }
+
+        if (themCv != null) {
+            themCv.setOnAction(this::hanlderAddCV);
+        }
+
     }
 }

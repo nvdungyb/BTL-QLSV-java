@@ -73,7 +73,7 @@
                                     </font>
                                 </Label>
 <!--                                <ListView fx:id="Notification" fixedCellSize="4.0" prefHeight="378.0" prefWidth="302.0" style="-fx-background-radius: 6px;" />-->
-                                <ScrollPane layoutX="760.0" layoutY="65.0" prefHeight="420.0" prefWidth="439.0" style="-fx-background-radius: 6px;">
+                                <ScrollPane layoutX="760.0" layoutY="65.0" prefHeight="382.0" prefWidth="381.0" style="-fx-background-radius: 6px;">
                                     <content>
                                         <VBox fx:id="Notification" prefHeight="408.0" prefWidth="268.0" style="-fx-background-radius: 6px;" />
                                     </content>
@@ -85,16 +85,19 @@
                         <Insets left="5.0" />
                     </VBox.margin>
                 </HBox>
-                <Label nodeOrientation="LEFT_TO_RIGHT" prefHeight="35.0" prefWidth="1020.0" style="-fx-background-color: #dcdee4; -fx-background-radius: 6px;" text="  Công Việc" textFill="#881337">
-                    <font>
-                        <Font name="#9Slide03 Open Sans SemiBold" size="14.0" />
-                    </font>
-                </Label>
-                <TableView fx:id="table" prefHeight="301.0" prefWidth="574.0" style="-fx-border-color: white; -fx-background-radius: 6px;">
+                <AnchorPane style="-fx-background-color: #dcdee4; -fx-background-radius: 6px;">
+                    <Label nodeOrientation="LEFT_TO_RIGHT" prefHeight="35.0" prefWidth="97.0" style="-fx-background-color: #dcdee4; -fx-background-radius: 6px;" text="  Công Việc" textFill="#881337">
+                        <font>
+                            <Font size="15.0" />
+                        </font>
+                    </Label>
+               <Button fx:id="themCv" layoutX="945.0" layoutY="4.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="58.0" text="Thêm" />
+                </AnchorPane>
+                <TableView fx:id="workTable" prefHeight="301.0" prefWidth="574.0" style="-fx-border-color: white; -fx-background-radius: 6px;">
                     <columns>
-                        <TableColumn fx:id="cvColumn" prefWidth="196.79998779296875" style="-fx-background-color: white;" text="Công việc " />
-                        <TableColumn fx:id="ttColumn" prefWidth="210.4000244140625" style="-fx-background-color: white;" text="Trạng thái" />
-                        <TableColumn fx:id="dateColumn" prefWidth="610.0" style="-fx-background-color: white;" text="Ngày" />
+                        <TableColumn fx:id="cvColumn" prefWidth="631.0" style="-fx-background-color: white;" text="Công việc " />
+                        <TableColumn fx:id="ttColumn" prefWidth="208.0" style="-fx-background-color: white;" text="Trạng thái" />
+                        <TableColumn fx:id="dateColumn" prefWidth="179.0" style="-fx-background-color: white;" text="Ngày hoàn thành" />
                     </columns>
                 </TableView>
             </children>

@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
 public class app extends Application {
 
     public static void main(String[] args) {
@@ -16,7 +17,7 @@ public class app extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Gui/Login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Gui/Main.fxml"));
         // Lấy kích thước màn hình chính
 //        Screen screen = Screen.getPrimary();
 //        Rectangle2D bounds = screen.getBounds();
@@ -26,6 +27,8 @@ public class app extends Application {
         stage.setX(50);
         stage.setY(50);
 //        stage.setMaximized(true);
+        stage.setResizable(false);
+        stage.setTitle("Phần mềm quản lý sinh viên");
         stage.show();
 
     }

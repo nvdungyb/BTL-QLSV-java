@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="643.0" prefWidth="1082.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manage.controller.SinhVienController">
+<VBox prefHeight="708.0" prefWidth="1065.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manage.controller.SinhVienController">
    <children>
       <AnchorPane prefHeight="38.0" prefWidth="1053.0" style="-fx-background-color: white; -fx-border-color: rgba(229, 231, 235, 1);">
          <children>
@@ -23,46 +23,47 @@
             </Label>
          </children>
       </AnchorPane>
-      <VBox prefHeight="609.0" prefWidth="1040.0">
+      <VBox prefHeight="670.0" prefWidth="1082.0">
          <children>
             <AnchorPane prefHeight="38.0" prefWidth="1040.0">
                <children>
-                  <AnchorPane layoutY="4.0" prefHeight="41.0" prefWidth="384.0">
+                  <AnchorPane layoutY="4.0" prefHeight="68.0" prefWidth="384.0">
                      <children>
                         <AnchorPane prefHeight="34.0" prefWidth="200.0" style="-fx-border-color: rgba(229, 231, 235, 1);">
                            <children>
-                              <ImageView fitHeight="32.0" fitWidth="18.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="18.0" fitWidth="28.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Image/500px-Search_Icon.svg.png" />
                                  </image>
                               </ImageView>
-                              <TextField fx:id="randomSearch" layoutX="24.0" layoutY="1.0" prefHeight="26.0" prefWidth="181.0" promptText="Tìm kiếm" style="-fx-background-color: white;" />
+                              <TextField fx:id="randomSearch" layoutX="24.0" layoutY="1.0" prefHeight="26.0" prefWidth="195.0" promptText="Tìm kiếm" style="-fx-background-color: white;" />
                            </children>
                         </AnchorPane>
-                        <ComboBox layoutX="259.0" layoutY="4.0" prefHeight="26.0" prefWidth="111.0" promptText="Lọc" style="-fx-background-color: white; -fx-border-color: rgba(229, 231, 235, 1);">
+                        <ComboBox fx:id="filter" layoutX="259.0" layoutY="4.0" prefHeight="26.0" prefWidth="111.0" promptText="Giới tính" style="-fx-background-color: white; -fx-border-color: rgba(229, 231, 235, 1);">
                            <items>
                               <FXCollections fx:factory="observableArrayList">
-                                 <String fx:value="Mục 1" />
-                                 <String fx:value="Mục 2" />
-                                 <String fx:value="Mục 3" />
+                                 <String fx:value="Nam" />
+                                 <String fx:value="Nữ" />
+                                 <String fx:value="Tất cả" />
                               </FXCollections>
                            </items>
                         </ComboBox>
+                        <Button fx:id="reset" layoutX="7.0" layoutY="42.0" mnemonicParsing="false" text="Reset" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="682.0" layoutY="7.0" prefHeight="41.0" prefWidth="358.0">
+                  <AnchorPane layoutX="679.0" layoutY="25.0" prefHeight="41.0" prefWidth="358.0">
                      <children>
                         <Button fx:id="addStudent" mnemonicParsing="false" prefHeight="26.0" prefWidth="52.0" style="-fx-background-color: rgba(225, 29, 72, 1);" text="Thêm" textFill="WHITE" />
-                        <Button fx:id="sua" layoutX="194.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" style="-fx-background-color: rgba(225, 29, 72, 1);" text="Sửa" textFill="#f7f0f0" />
-                        <Button fx:id="delete" layoutX="275.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" stylesheets="@them_sua.css" text="Xóa" textFill="WHITE" />
-                        <Button fx:id="sapXep" layoutX="95.0" layoutY="1.0" mnemonicParsing="false" style="-fx-background-color: rgba(225, 29, 72, 1);" text="Sắp xếp" textFill="WHITE" />
+                        <Button fx:id="sua" layoutX="186.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="58.0" style="-fx-background-color: rgba(225, 29, 72, 1);" text="Sửa" textFill="#f7f0f0" />
+                        <Button fx:id="delete" layoutX="278.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" stylesheets="@them_sua.css" text="Xóa" textFill="WHITE" />
+                        <Button fx:id="sapXep" layoutX="90.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="58.0" style="-fx-background-color: rgba(225, 29, 72, 1);" text="Sắp xếp" textFill="WHITE" />
                      </children>
                   </AnchorPane>
                   <Button fx:id="search" layoutX="413.0" layoutY="12.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" style="-fx-background-color: rgba(225, 29, 72, 1);" text="Tìm" textFill="WHITE" />
-                  <Button fx:id="hienThi" layoutX="547.0" layoutY="12.0" mnemonicParsing="false" text="Hiển thị" />
+                  <Button fx:id="hienThi" layoutX="514.0" layoutY="12.0" mnemonicParsing="false" text="Hiển thị" />
                </children>
             </AnchorPane>
-            <TableView fx:id="tableShow" fixedCellSize="0.0" prefHeight="557.0" prefWidth="1300.0">
+            <TableView fx:id="tableShow" fixedCellSize="0.0" prefHeight="615.0" prefWidth="1082.0">
                <columns>
                   <TableColumn fx:id="check" prefWidth="99.0" text="CheckBox">
                   </TableColumn>

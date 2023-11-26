@@ -39,17 +39,28 @@
                                 <VBox alignment="BOTTOM_LEFT" prefHeight="72.0" prefWidth="316.0" styleClass="Box">
                                     <children>
                                         <Label text="Họ và tên" />
-                                        <TextField fx:id="tenSv" prefHeight="40.0" prefWidth="316.0" />
+                                        <TextField fx:id="tenSv" prefHeight="40.0" prefWidth="316.0">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></TextField>
                                     </children>
                                     <GridPane.margin>
                                         <Insets />
                                     </GridPane.margin>
                                 </VBox>
-                                <VBox prefHeight="104.0" prefWidth="316.0" styleClass="Box" GridPane.rowIndex="1">
-                                    <children>
-                                        <Label text="Mã sinh viên" />
-                              <Label fx:id="maSv" prefHeight="40.0" prefWidth="316.0" text="Mã sinh viên" />
-                                    </children>
+                                <VBox prefHeight="56.0" prefWidth="316.0" styleClass="Box" GridPane.rowIndex="1">
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Label fx:id="maSv" layoutY="31.0" prefHeight="40.0" prefWidth="316.0" text="Mã sinh viên">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                              <Label layoutY="14.0" text="Mã sinh viên" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
                                 </VBox>
                                 <VBox styleClass="Box" GridPane.columnSpan="2" GridPane.rowIndex="2">
                                     <children>
@@ -84,7 +95,10 @@
                                 <VBox prefWidth="230.0" styleClass="Box" GridPane.rowIndex="5">
                                     <children>
                                         <Label text="Lớp" />
-                              <TextField fx:id="lop" minHeight="30.0" prefWidth="316.0" />
+                              <TextField fx:id="lop" minHeight="30.0" prefWidth="316.0">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></TextField>
                                     </children>
                                 </VBox>
                                 <VBox styleClass="Box" GridPane.columnIndex="1" GridPane.rowIndex="5">
@@ -106,7 +120,6 @@
                                                 <Insets />
                                             </VBox.margin>
                                         </ImageView>
-                              <Label prefHeight="17.0" prefWidth="178.0" text="Họ tên sinh viên " />
                                     </children>
                                     <GridPane.margin>
                                         <Insets />

@@ -21,6 +21,7 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
 
+
 public class LoginController implements Initializable {
     @FXML
     private PasswordField Password;
@@ -70,10 +71,20 @@ public class LoginController implements Initializable {
                     Scene scene = new Scene(root);
                     Stage stage = new Stage();
                     stage.setScene(scene);
+                    stage.setResizable(false);
+                    stage.setTitle("Phần mềm quản lý sinh viên");
                     stage.show();
 
                 } else {
                     status.setText("Tên đăng nhập hoặc mật khẩu sai!");
+                    UserName.setStyle("-fx-border-color: red;");
+                    UserName.setOnKeyReleased(
+                            event -> UserName.setStyle("-fx-border-color: none;")
+                    );
+                    Password.setStyle("-fx-border-color: red;");
+                    Password.setOnKeyReleased(
+                            event -> Password.setStyle("-fx-border-color: none;")
+                    );
                     statusPause();
                 }
             } catch (Exception e) {
@@ -93,7 +104,7 @@ public class LoginController implements Initializable {
 
             try {
                 connection.close();
-            }catch(Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

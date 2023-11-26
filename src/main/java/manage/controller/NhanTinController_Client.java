@@ -1,6 +1,5 @@
 package manage.controller;
 
-
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -12,7 +11,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -22,7 +20,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
-import manage.database.*;
+import manage.database.ConnectDatabase;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -34,7 +32,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
-public class NhanTinController implements Initializable {
+public class NhanTinController_Client {
     @FXML
     private Button button_send;
 
@@ -365,4 +363,3 @@ public class NhanTinController implements Initializable {
     }
 
 }
-

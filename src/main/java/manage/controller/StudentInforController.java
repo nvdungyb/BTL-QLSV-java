@@ -38,6 +38,7 @@ public class StudentInforController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         SinhVien sv = SinhVienController.getInforSv();
+        lineChart.setLayoutY(4.0);
 
         if (sv != null) {
             name.setText(sv.getTenSv());
@@ -56,19 +57,27 @@ public class StudentInforController implements Initializable {
         try {
             Connection con = ConnectDatabase.connect();
             Statement statement = con.createStatement();
-            String sql = "SELECT * FROM java_project.bangdiem WHERE id_sv = '" + sv.getMaSv() + "';";
-            ResultSet resultSet = statement.executeQuery(sql);
-            while (resultSet.next()) {
-                for (int i = 2; i <= 10; i++) {
-                    if (resultSet.getString("ki" + (i - 1)) != null) {
-                        double gpa = Double.parseDouble(resultSet.getString("ki" + (i - 1)));
-                        series.getData().add(new XYChart.Data<>(i - 1, gpa));
-                    }
+            for (int i = 2; i <= 10; i++) {
+                String query = "SELECT diem.id_sv, SUM(diem.diemTK4 * diem.sotc) AS tongDiem, SUM(sotc) AS tongtc, diem.ky" +
+                        " FROM(" +
+                        "SELECT d.*, m.ten_mh, sotc" +
+                        " FROM sv_mh d" +
+                        " INNER JOIN monhoc m ON d.id_mh=m.id_mh" +
+                        " WHERE (d.id_sv='" + sv.getMaSv() + "') AND (d.ky='" + (i - 1) + "')" +
+                        "GROUP BY d.id_sv, m.id_mh, d.ky) as diem" +
+                        " GROUP BY diem.id_sv;";
+
+                System.out.println(query);
+                ResultSet resultSet = statement.executeQuery(query);
+                if (resultSet.next()) {
+                    double tongDiem = Double.parseDouble(resultSet.getString("tongDiem"));
+                    double tongtc = Double.parseDouble(resultSet.getString("tongtc"));
+                    double gpa = tongDiem / tongtc;
+                    System.out.println(gpa);
+                    series.getData().add(new XYChart.Data<>(i - 1, gpa));
                 }
             }
 
-            System.out.println(sql);
-            System.out.println(resultSet);
 
 //            series.getData().add(new XYChart.Data<>(1, 3.2));
 //            series.getData().add(new XYChart.Data<>(2, 3.5));

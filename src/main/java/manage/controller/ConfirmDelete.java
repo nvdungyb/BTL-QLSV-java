@@ -96,7 +96,7 @@ public class ConfirmDelete implements Initializable {
                 SinhVien sv = (SinhVien) iterator.next();
                 if (sv.getCheckBox().getValue()) {
                     try {
-                        String sql = "DELETE FROM java_project.sinhvien WHERE id_sv = '" + sv.getMaSv() + "';";
+                        String sql = "DELETE FROM demo.sinhvien WHERE id_sv = '" + sv.getMaSv() + "';";
                         Connection con = ConnectDatabase.connect();
                         Statement statement = con.createStatement();
                         statement.execute(sql);

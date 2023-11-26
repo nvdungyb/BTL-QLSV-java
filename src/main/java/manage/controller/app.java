@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,6 +23,10 @@ public class app extends Application {
 //        Screen screen = Screen.getPrimary();
 //        Rectangle2D bounds = screen.getBounds();
 
+        Image icon = new Image(getClass().getResourceAsStream("/Image/PTIT Logo.png"));
+
+        // Thiết lập icon cho cửa sổ ứng dụng
+        stage.getIcons().add(icon);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setX(50);

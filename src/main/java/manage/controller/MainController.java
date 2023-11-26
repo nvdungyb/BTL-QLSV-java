@@ -60,7 +60,7 @@ public class MainController implements Initializable {
 
             ConnectDatabase con = new ConnectDatabase();
             Statement statement = con.connect().createStatement();
-            String sql = "SELECT * FROM java_project.sinhvien;";
+            String sql = "SELECT * FROM demo.sinhvien;";
             ResultSet resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {

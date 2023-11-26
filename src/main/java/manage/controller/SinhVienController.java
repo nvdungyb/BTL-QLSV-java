@@ -51,6 +51,8 @@ public class SinhVienController implements Initializable {
     @FXML
     private TextField randomSearch;
     @FXML
+    private ComboBox filter;
+    @FXML
     private Button exporter;
     @FXML
     private Button sua;
@@ -60,6 +62,8 @@ public class SinhVienController implements Initializable {
     private Button delete;
     @FXML
     private Button sapXep;
+    @FXML
+    private Button reset;
     @FXML
     private Label warning;
 
@@ -95,6 +99,12 @@ public class SinhVienController implements Initializable {
     public void handleSearch(ActionEvent event) {
 
         String random = randomSearch.getText().trim();
+        String gender = "";
+        if (filter.getValue() != null) {
+            gender = filter.getValue().toString();
+            if (gender.equals("Tất cả"))
+                gender = "";
+        }
 
         ls.clear();
         hashMapStudent = HashMapStudent.getHashSinhVien();
@@ -103,7 +113,8 @@ public class SinhVienController implements Initializable {
             SinhVien sv = hashMapStudent.get(key);
 
             if (sv.getMaSv().contains(random) || sv.getTenSv().contains(random) || sv.getNgaySinh().contains(random) || sv.getGioiTinh().contains(random) || sv.getEmail().contains(random) || sv.getSdt().contains(random) || sv.getDiaChi().contains(random) || sv.getMaLop().contains(random)) {
-                ls.add(sv);
+                if (sv.getGioiTinh().equals(gender) || gender.equals(""))
+                    ls.add(sv);
             }
         }
 
@@ -226,8 +237,7 @@ public class SinhVienController implements Initializable {
         if (event.getSource() == sua) {
             boolean ok = true;
             int numStudent = 0;
-            for (String x : hashMapStudent.keySet()) {
-                SinhVien sv = hashMapStudent.get(x);
+            for (SinhVien sv : ls) {
                 if (sv.getCheckBox().getValue() == true) {
                     numStudent++;
                     if (inforSv == null) {
@@ -273,8 +283,7 @@ public class SinhVienController implements Initializable {
         if (event.getSource() == hienThi) {
             boolean ok = true;
             int numStudent = 0;
-            for (String x : hashMapStudent.keySet()) {
-                SinhVien sv = hashMapStudent.get(x);
+            for (SinhVien sv : ls) {
                 if (sv.getCheckBox().getValue() == true) {
                     numStudent++;
                     if (inforSv == null) {
@@ -387,6 +396,14 @@ public class SinhVienController implements Initializable {
 
         if (hienThi != null) {
             hienThi.setOnAction(this::handleShowInfor);
+        }
+
+        if (reset != null) {
+            reset.setOnAction(event -> {
+               for(SinhVien sv : ls){
+                   sv.setCheckBox(false);
+               }
+            });
         }
     }
 }

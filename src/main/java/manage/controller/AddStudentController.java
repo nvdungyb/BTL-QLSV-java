@@ -61,6 +61,8 @@ public class AddStudentController implements Initializable {
     }
 
     public void handleThem(ActionEvent event) {
+        // Quan hệ sinhvien có khóa ngoại là id_lophc: để thêm sinh viên thành công thì id_lophc phải tồn tại.
+
         if (event.getSource() == them) {
             hashMapStudent = HashMapStudent.getHashSinhVien();
             try {
@@ -77,10 +79,10 @@ public class AddStudentController implements Initializable {
                 if (name.equals("") || id.equals("") || gender.equals("") || phone.equals("") || address.equals("") || classId.equals("") || faculty.equals("") || dob.equals("") || mail.equals("")) {
                     status.setText("Vui lòng nhập đầy đủ thông tin!");
                     statusPause();
-                } else if (Validation.EmailValidate(mail)) {
+                } else if (!Validation.EmailValidate(mail)) {
                     status.setText("Email không hợp lệ!");
                     statusPause();
-                } else if (Validation.EmailValidate(phone)) {
+                } else if (!Validation.PhoneValidate(phone)) {
                     status.setText("Số điện thoại không hợp lệ!");
                     statusPause();
                 } else {

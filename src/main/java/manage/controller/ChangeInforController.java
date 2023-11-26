@@ -67,7 +67,7 @@ public class ChangeInforController implements Initializable {
                 alert.setContentText("Số điện thoại không hợp lệ!");
                 alert.showAndWait();
             } else {
-                String sql = "UPDATE java_project.sinhvien SET ten_sv = '" + name + "', ngaysinh = '" + dob + "', que = '" + address + "', email = '" + mail + "', gioitinh = '" + gender + "', sodt = '" + phone + "', id_lhc = '" + class_id + "' WHERE id_sv = '" + id_sv + "'";
+                String sql = "UPDATE java_project.sinhvien SET ten_sv = '" + name + "', dob = '" + dob + "', quequan = '" + address + "', email = '" + mail + "', gioitinh = '" + gender + "', sodt = '" + phone + "', id_lophc = '" + class_id + "' WHERE id_sv = '" + id_sv + "'";
                 System.out.println(sql);
                 try {
                     Connection con = ConnectDatabase.connect();

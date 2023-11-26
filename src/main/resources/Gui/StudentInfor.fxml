@@ -141,7 +141,7 @@
                                 <VBox styleClass="Box" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                                 <VBox alignment="CENTER" fillWidth="false" prefHeight="129.0" prefWidth="256.0" spacing="5.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="TOP">
                                     <children>
-                                        <ImageView cache="true" fitHeight="142.0" fitWidth="153.0" pickOnBounds="true">
+                                        <ImageView cache="true" fitHeight="142.0" fitWidth="168.0" pickOnBounds="true">
                                             <image>
                                                 <Image url="@../Image/avatar1.jpg" />
                                             </image>
@@ -152,9 +152,9 @@
                                                 <Insets />
                                             </VBox.margin>
                                         </ImageView>
-                              <AnchorPane prefHeight="36.0" prefWidth="200.0">
+                              <AnchorPane prefHeight="32.0" prefWidth="211.0">
                                  <children>
-                                              <Label fx:id="name" layoutX="46.0" prefHeight="20.0" prefWidth="140.0" text="Họ tên sinh viên " textAlignment="CENTER">
+                                              <Label fx:id="name" layoutX="46.0" prefHeight="20.0" prefWidth="168.0" text="Họ tên sinh viên " textAlignment="CENTER">
                                                   <font>
                                                       <Font size="14.0" />
                                                   </font>
@@ -176,7 +176,7 @@
                                     <NumberAxis autoRanging="false" label="Kì học" lowerBound="0.0" side="BOTTOM" tickUnit="1.0" upperBound="9.0" />
                                 </xAxis>
                                 <yAxis>
-                                    <NumberAxis label="GPA" prefHeight="175.0" prefWidth="34.0" side="LEFT" upperBound="4.0" />
+                                    <NumberAxis autoRanging="false" label="GPA" prefHeight="175.0" prefWidth="34.0" side="LEFT" tickUnit="0.2" upperBound="4.0" />
                                 </yAxis>
                               </LineChart>
                            </children>

@@ -42,49 +42,49 @@ public class Client {
         }
     }
 
-    //    public void receiveMessageFromServer(VBox vBox) {
-//        new Thread(new Runnable() {
-//
-//            @Override
-//            public void run() {
-//                // TODO Auto-generated method stub
-//                while(socket.isConnected()) {
-//                    try {
-//                        String messageFromServer = bufferedReader.readLine();
-//                        NhanTinController.addLabel(messageFromServer, vBox);
-//                    } catch (IOException e) {
-//                        // TODO Auto-generated catch block
-//                        e.printStackTrace();
-//                        System.out.println("Error receiving message from the client (Server)");
-//                        closeEverything(socket, bufferedReader, bufferedWriter);
-//                        break;
-//                    }
-//                }
-//            }
-//
-//        }).start();
-//    }
-    public void receiveMessageFromServer(VBox vBox) {
-        try {
-            while (socket.isConnected()) {
-                String messageFromServer = bufferedReader.readLine();
-                if (messageFromServer == null || messageFromServer.isEmpty()) {
-                    // Kết nối đã đóng hoặc tin nhắn rỗng, thoát khỏi vòng lặp
-                    break;
+        public void receiveMessageFromServer(VBox vBox) {
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                while(socket.isConnected()) {
+                    try {
+                        String messageFromServer = bufferedReader.readLine();
+                        NhanTinController.addLabel(messageFromServer, vBox);
+                    } catch (IOException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                        System.out.println("Error receiving message from the client (Server)");
+                        closeEverything(socket, bufferedReader, bufferedWriter);
+                        break;
+                    }
                 }
-
-                Platform.runLater(() -> NhanTinController.addLabel(messageFromServer, vBox));
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Error receiving message from the server");
-        } finally {
-            // Khi kết thúc vòng lặp, đóng tất cả tài nguyên
-            closeEverything(socket, bufferedReader, bufferedWriter);
-        }
+
+        }).start();
     }
-
-
+//    public void receiveMessageFromServer(VBox vBox) {
+//        try {
+//            while (socket.isConnected()) {
+//                String messageFromServer = bufferedReader.readLine();
+//                if (messageFromServer == null || messageFromServer.isEmpty()) {
+//                    // Kết nối đã đóng hoặc tin nhắn rỗng, thoát khỏi vòng lặp
+//                    break;
+//                }
+//
+//                Platform.runLater(() -> NhanTinController.addLabel(messageFromServer, vBox));
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            System.out.println("Error receiving message from the server");
+//        } finally {
+//            // Khi kết thúc vòng lặp, đóng tất cả tài nguyên
+//            closeEverything(socket, bufferedReader, bufferedWriter);
+//        }
+//    }
+//
+//
     public void closeEverything(Socket socket, BufferedReader bufferedReader, BufferedWriter bufferedWriter) {
         try {
             if(bufferedReader != null) {

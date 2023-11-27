@@ -1,6 +1,7 @@
-Thêm tính năng nhắn tin ( nhưng mà bị lỗi chỗ gộp cả 2 cái Server và Client vào cùng 1 file) 
+27/11: Thêm tính năng nhắn tin, thêm phần Tài liệu (nhấn vào tài liệu máy tính tự mở), lưu chỗ Công việc vào Database
+
 Trong CSDL tạo bảng tinnhan1
-Đây là SQL:
+Đây là SQL phần nhắn tin:
 
 use java_project;
 CREATE TABLE `java_project`.`tinnhan1` (
@@ -44,4 +45,27 @@ INSERT INTO `demo`.`tinnhan1` (`id_tn`, `stt`, `message`, `from`) VALUES ('CNTT_
 INSERT INTO `demo`.`tinnhan1` (`id_tn`, `stt`, `message`, `from`) VALUES ('CNTT_TTDPT', '1', 'Hiiiiiiiiiiiiiiiiiiiiiiiii', 'TTDPT');
 INSERT INTO `demo`.`tinnhan1` (`id_tn`, `stt`, `message`, `from`) VALUES ('CNTT_TTDPT', '2', 'Hello', 'CNTT');
 
+SQL phần Công việc:
+
+CREATE TABLE `btl_java`.`congviec` (
+  `mota` VARCHAR(350) NOT NULL,
+  `trangthai` VARCHAR(350) NOT NULL,
+  `ngaythang` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`mota`, `trangthai`, `ngaythang`));
+
+INSERT INTO `demo`.`congviec` (`mota`, `trangthai`, `ngaythang`) VALUES ('Giáng sinh cùng ny', 'chưa đến ngày', '2023-12-25');
+INSERT INTO `demo`.`congviec` (`mota`, `trangthai`, `ngaythang`) VALUES ('Thi học kì 1', 'chưa hoàn thành', '12/12/2023');
+INSERT INTO `demo`.`congviec` (`mota`, `trangthai`, `ngaythang`) VALUES ('Thi học kì 1 môn MMT', 'chưa hoàn thành', '2023-12-25');
+INSERT INTO `demo`.`congviec` (`mota`, `trangthai`, `ngaythang`) VALUES ('Thi môn LSĐ', 'chưa hoàn thành', '12/12/2023');
+INSERT INTO `demo`.`congviec` (`mota`, `trangthai`, `ngaythang`) VALUES ('Thi môn Python', 'chưa hoàn thành', '19/12/2023');
+
+
+
+SQL phần Tài liệu:
+CREATE TABLE `btl_java`.`tailieu` (
+  `url` VARCHAR(200) NOT NULL,
+  `khoa` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`url`, `khoa`));
+
   
+

@@ -131,6 +131,7 @@ public class SinhVienController implements Initializable {
         });
         check.setEditable(true);
 
+        // Tên getter phải đúng thì mới tìm được thuộc tính của đối tượng nhé.
         maSv.setCellValueFactory(new PropertyValueFactory<>("maSv"));
         tenSv.setCellValueFactory(new PropertyValueFactory<>("tenSv"));
         ngaySinh.setCellValueFactory(new PropertyValueFactory<>("ngaySinh"));

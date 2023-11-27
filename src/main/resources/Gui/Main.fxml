@@ -5,23 +5,22 @@
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="758.0" prefWidth="1285.0"  xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manage.controller.MainController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="758.0" prefWidth="1285.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manage.controller.MainController">
     <content>
         <VBox prefHeight="753.0" prefWidth="1280.0">
             <children>
-                <AnchorPane prefHeight="40.0" prefWidth="1280.0" style="-fx-background-color: #881337;">
+                <AnchorPane prefHeight="54.0" prefWidth="1280.0" style="-fx-background-color: #881337;">
                     <children>
                         <ImageView fitHeight="49.0" fitWidth="52.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../Image/Logo.png" />
                             </image>
                         </ImageView>
-                        <Label layoutX="463.0" layoutY="1.0" prefHeight="36.0" prefWidth="367.0" text="HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG" textFill="WHITE">
+                        <Label layoutX="393.0" layoutY="2.0" prefHeight="46.0" prefWidth="494.0" text="Posts and Telecommunications Institute of Technology" textFill="WHITE">
                             <font>
-                                <Font size="16.0" />
+                                <Font size="20.0" />
                             </font>
                         </Label>
                     </children>
@@ -45,11 +44,11 @@
                                         <Insets left="10.0" />
                                     </padding>
                                 </AnchorPane>
-                                <Line endX="100.0" endY="-1.112475037574768" startX="-100.0" stroke="#dddddd" strokeWidth="2.0">
-                                    <VBox.margin>
-                                        <Insets />
-                                    </VBox.margin>
-                                </Line>
+<!--                                <Line endX="100.0" endY="-1.112475037574768" startX="-100.0" stroke="#dddddd" strokeWidth="2.0">-->
+<!--                                    <VBox.margin>-->
+<!--                                        <Insets />-->
+<!--                                    </VBox.margin>T-->
+<!--                                </Line>-->
                                 <VBox prefHeight="156.0" prefWidth="207.0" spacing="5.0">
                                     <children>
                                         <Button fx:id="trangchu" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#trangchuAction" prefHeight="45.0" prefWidth="220.0" styleClass="selectable" text="Trang Chủ" textFill="#b72323">
@@ -79,7 +78,7 @@
                                                 </ImageView>
                                             </graphic>
                                         </Button>
-                                        <Button fx:id="thongke" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#sinhvienAction" prefHeight="40.0" prefWidth="220.0" styleClass="selectable" text="Thống kê" textFill="#b72323">
+                                        <Button fx:id="thongke" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#thongkeAction" prefHeight="40.0" prefWidth="220.0" styleClass="selectable" text="Thống kê" textFill="#b72323">
                                             <font>
                                                 <Font name="#9Slide03 Open Sans SemiBold" size="16.0" />
                                             </font>

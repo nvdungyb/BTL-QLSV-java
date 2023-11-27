@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="327.0" prefWidth="485.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manage.controller.ThemTaiLieuController">
+    <children>
+          <TextField fx:id="link" layoutX="122.0" layoutY="117.0" prefHeight="47.0" prefWidth="337.0" promptText="Đường dẫn....." />
+          <Button fx:id="fileChooser" layoutX="33.0" layoutY="123.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="66.0" style="-fx-background-color: #ed8879;" text="Chọn" textFill="#881337">
+              <font>
+                  <Font size="13.0" />
+              </font>
+      </Button>
+          <Button fx:id="submit" layoutX="322.0" layoutY="228.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="109.0" style="-fx-background-color: #ed8879;" text="Submit" textFill="#881337">
+              <font>
+                  <Font size="16.0" />
+              </font>
+          </Button>
+          <Label fx:id="warningLable" disable="true" layoutX="221.0" layoutY="190.0" prefHeight="17.0" prefWidth="164.0" text="Label" textFill="#881337" />
+      <Button fx:id="fileChooser1" layoutX="33.0" layoutY="58.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="66.0" style="-fx-background-color: #ed8879;" text="Khoa" textFill="#881337">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <TextField fx:id="khoa" layoutX="122.0" layoutY="52.0" prefHeight="47.0" prefWidth="337.0" promptText="Khoa......" />
+    </children>
+</AnchorPane>

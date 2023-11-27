@@ -6,6 +6,7 @@ module Main {
     requires poi.ooxml;
     requires javafx.base;
     requires javafx.graphics;
+    requires java.desktop;
 
     exports manage.controller;
     opens manage.controller to javafx.fxml;

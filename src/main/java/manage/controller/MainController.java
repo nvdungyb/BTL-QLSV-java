@@ -4,8 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import manage.data.HashMapStudent;
 import manage.data.SinhVien;
@@ -21,11 +23,22 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
     @FXML
+    public Button thongke;
+    @FXML
+    public Button sinhvien;
+    @FXML
+    public Button trangchu;
+    @FXML
+    public Button tailieu;
+    @FXML
     private VBox trangChuContent;
     @FXML
     private VBox sinhVienContent;
     @FXML
-    private VBox nhanTinContent;
+    private AnchorPane nhanTinContent;
+
+    @FXML
+    private AnchorPane tailieuContent;
     @FXML
     ScrollPane container;
     @FXML
@@ -36,6 +49,10 @@ public class MainController implements Initializable {
     @FXML
     public void trangchuAction(ActionEvent event) throws IOException {
         container.setContent(trangChuContent);
+    }
+    @FXML
+    public void tailieuAction(ActionEvent event) throws IOException{
+        container.setContent(tailieuContent);
     }
 
     @FXML
@@ -54,6 +71,7 @@ public class MainController implements Initializable {
             trangChuContent = FXMLLoader.load(getClass().getResource("/Gui/HomePage_sub.fxml"));
             sinhVienContent = FXMLLoader.load(getClass().getResource("/Gui/sinhVien_sub.fxml"));
             nhanTinContent = FXMLLoader.load(getClass().getResource("/Gui/nhanTin_sub.fxml"));
+            tailieuContent = FXMLLoader.load(getClass().getResource("/Gui/TaiLieu.fxml"));
             container.setContent(trangChuContent);
             String userName = LoginController.getUserName();
             UserName.setText(userName);

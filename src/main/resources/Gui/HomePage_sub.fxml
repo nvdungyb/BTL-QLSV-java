@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-<VBox prefWidth="1040.0" spacing="10.0" style="-fx-background-color: #F3F4F6;" styleClass="GiaoDien" stylesheets="@TrangChu_Sub.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manage.controller.HomePageController">
+<VBox prefWidth="1040.0" spacing="10.0" style="-fx-background-color: #F3F4F6;" styleClass="GiaoDien" stylesheets="@TrangChu_Sub.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manage.controller.HomePageController">
     <children>
         <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="20.0" prefWidth="600.0" style="-fx-background-color: #F3F4F6;">
             <children>
@@ -92,6 +99,7 @@
                         </font>
                     </Label>
                <Button fx:id="themCv" layoutX="945.0" layoutY="4.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="58.0" text="Thêm" />
+               <Button fx:id="hthiCv" layoutX="883.0" layoutY="5.0" mnemonicParsing="false" text="Hiển thị" />
                 </AnchorPane>
                 <TableView fx:id="workTable" prefHeight="301.0" prefWidth="574.0" style="-fx-border-color: white; -fx-background-radius: 6px;">
                     <columns>

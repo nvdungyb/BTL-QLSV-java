@@ -40,6 +40,8 @@ public class HomePageController implements Initializable {
     @FXML
     private Button themCv;
     @FXML
+    private Button hthiCv;
+    @FXML
     private TableView workTable;
     @FXML
     private TableColumn<CongViec, String> cvColumn;
@@ -122,16 +124,23 @@ public class HomePageController implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-            cvColumn.setCellValueFactory(new PropertyValueFactory("moTa"));
-            ttColumn.setCellValueFactory(new PropertyValueFactory("trangThai"));
-            dateColumn.setCellValueFactory(new PropertyValueFactory("ngayThang"));
-
-            ArrayList<CongViec> lsCongViec = CongViecController.getLsCongViec();
-            ObservableList<CongViec> list = FXCollections.observableArrayList(lsCongViec);
-            workTable.setItems(list);
-            workTable.refresh();
+            showCV();
         }
+    }
+
+    public void handlerShowCV(ActionEvent event){
+        showCV();
+    }
+
+    public void showCV(){
+        cvColumn.setCellValueFactory(new PropertyValueFactory<>("moTa"));
+        ttColumn.setCellValueFactory(new PropertyValueFactory<>("trangThai"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("ngayThang"));
+
+        ArrayList<CongViec> lsCongViec = CongViecController.getLsCongViec();
+        ObservableList<CongViec> list = FXCollections.observableArrayList(lsCongViec);
+        workTable.setItems(list);
+        workTable.refresh();
     }
 
     @Override
@@ -143,6 +152,10 @@ public class HomePageController implements Initializable {
 
         if (themCv != null) {
             themCv.setOnAction(this::hanlderAddCV);
+        }
+
+        if(hthiCv != null){
+            hthiCv.setOnAction(this::handlerShowCV);
         }
 
     }

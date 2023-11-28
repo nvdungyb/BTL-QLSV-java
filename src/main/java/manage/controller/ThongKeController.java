@@ -285,7 +285,7 @@ public class ThongKeController implements Initializable {
         }
 
         if (courseButton != null) {
-            courseButton.setOnAction(event ->{
+            courseButton.setOnAction(event -> {
                 MainController.setAutoScroll(true);
                 MainController.setTarget(0.8);
             });
@@ -414,10 +414,12 @@ public class ThongKeController implements Initializable {
                         if (rs.next()) {
                             String tenSv = rs.getString("ten_sv");
                             detailStudentTranscrip.setText("Bảng điểm chi tiết của sinh viên:  " + maSv + "  -  " + tenSv);
+                        } else {
+                            detailStudentTranscrip.setText("Không tìm thấy sinh viên có mã:  " + maSv);
                         }
 
                         con.close();
-                    }catch (Exception e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 } else {

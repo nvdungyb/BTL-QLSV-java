@@ -90,7 +90,7 @@
                                                 </ImageView>
                                             </graphic>
                                         </Button>
-                                        <Button fx:id="nhantin" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="20.0" mnemonicParsing="false" onAction="#nhantinAction" prefHeight="45.0" prefWidth="208.0" styleClass="selectable" stylesheets="@Main.css" text="Nhắn Tin" textFill="#b72323">
+                                        <Button fx:id="nhantin" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="20.0" mnemonicParsing="false" onAction="#nhantinAction" prefHeight="45.0" prefWidth="208.0" styleClass="selectable" text="Nhắn Tin" textFill="#b72323">
                                             <font>
                                                 <Font name="#9Slide03 Open Sans SemiBold" size="16.0" />
                                             </font>

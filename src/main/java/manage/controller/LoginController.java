@@ -1,5 +1,6 @@
 package manage.controller;
 
+import javafx.application.Platform;
 import manage.database.ConnectDatabase;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
@@ -20,7 +21,6 @@ import java.util.ResourceBundle;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
-
 
 public class LoginController implements Initializable {
     @FXML
@@ -77,6 +77,11 @@ public class LoginController implements Initializable {
                     stage.setTitle("Phần mềm quản lý sinh viên");
                     stage.show();
 
+                    stage.setOnCloseRequest(event -> {
+                        Platform.exit();                            // Giải phóng tất cả tài nguyên của JavaFx và đóng tất cả các stage đang mở.
+                        System.exit(0);                       // Đóng tất cả các thread đang chạy. (Bởi vì phần chat có thể threads vẫn đang chạy).
+                    });
+
                 } else {
                     status.setText("Tên đăng nhập hoặc mật khẩu sai!");
                     UserName.setStyle("-fx-border-color: red;");
@@ -98,7 +103,8 @@ public class LoginController implements Initializable {
     public static String getUserName() {
         return userNameLogin;
     }
-    public static String getUrlImage(){
+
+    public static String getUrlImage() {
         return urlImage;
     }
 

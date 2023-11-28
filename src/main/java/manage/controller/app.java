@@ -18,7 +18,7 @@ public class app extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Gui/Main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Gui/Login.fxml"));
         // Lấy kích thước màn hình chính
 //        Screen screen = Screen.getPrimary();
 //        Rectangle2D bounds = screen.getBounds();

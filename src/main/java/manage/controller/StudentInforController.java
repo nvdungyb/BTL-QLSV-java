@@ -1,13 +1,20 @@
 package manage.controller;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import manage.data.SinhVien;
 import manage.database.ConnectDatabase;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -19,6 +26,8 @@ public class StudentInforController implements Initializable {
     private LineChart<Number, Number> lineChart;
     @FXML
     private Label maSv;
+    @FXML
+    private Label xemTKB;
     @FXML
     private Label name;
     @FXML
@@ -33,11 +42,12 @@ public class StudentInforController implements Initializable {
     private Label phone;
     @FXML
     private Label birthDate;
+    private static SinhVien sv;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        SinhVien sv = SinhVienController.getInforSv();
+        sv = SinhVienController.getInforSv();
         lineChart.setLayoutY(4.0);
 
         if (sv != null) {
@@ -89,5 +99,24 @@ public class StudentInforController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        xemTKB.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("/Gui/LichHoc1.fxml"));
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
     }
+    public static  String getMSV(){
+        return sv.getMaSv();
+    }
+
 }

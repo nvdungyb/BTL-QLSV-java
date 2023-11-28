@@ -1,5 +1,9 @@
 package manage.controller;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 import manage.data.HashMapStudent;
 import manage.data.SinhVien;
 import manage.database.ConnectDatabase;
@@ -40,11 +45,30 @@ public class MainController implements Initializable {
     @FXML
     private AnchorPane tailieuContent;
     @FXML
+    private VBox thongKeContent;
+    @FXML
     ScrollPane container;
     @FXML
     private Label UserName;
+    private static double targetScrollPane = 0;
+
+    private static SimpleBooleanProperty autoScroll = new SimpleBooleanProperty(false);
 
     HashMap<String, SinhVien> hashMapStudent = HashMapStudent.getHashSinhVien();
+
+
+    public static void setAutoScroll(boolean auto) {
+        autoScroll.set(auto);
+    }
+
+    public static void setTarget(double target) {
+        targetScrollPane = target;
+    }
+
+    @FXML
+    public void thongkeAction(ActionEvent event) {
+        container.setContent(thongKeContent);
+    }
 
     @FXML
     public void trangchuAction(ActionEvent event) throws IOException {
@@ -72,6 +96,8 @@ public class MainController implements Initializable {
             sinhVienContent = FXMLLoader.load(getClass().getResource("/Gui/sinhVien_sub.fxml"));
             nhanTinContent = FXMLLoader.load(getClass().getResource("/Gui/nhanTin_sub.fxml"));
             tailieuContent = FXMLLoader.load(getClass().getResource("/Gui/TaiLieu.fxml"));
+            thongKeContent = FXMLLoader.load(getClass().getResource("/Gui/ThongKe.fxml"));
+
             container.setContent(trangChuContent);
             String userName = LoginController.getUserName();
             UserName.setText(userName);
@@ -100,6 +126,21 @@ public class MainController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        autoScroll.addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                double scrollTime = 1000;                                                               // Định thời gian cho thanh cuộn chạy.
+                double target = targetScrollPane;                                                       // Định vị trí cuối cùng của thanh cuộn. (0.0 -> 1.0)
+
+                Timeline timeline = new Timeline(
+                        new KeyFrame(Duration.millis(scrollTime), new KeyValue(container.vvalueProperty(), target))
+                );
+
+                timeline.play();
+            } else {
+                container.vvalueProperty().unbind();                                                    // giải phóng bất kì ràng buộc nào được thiết lập cho thuộc tính vvalue của thanh cuộn.
+            }
+            setAutoScroll(false);
+        });
     }
 }
 

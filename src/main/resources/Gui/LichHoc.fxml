@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="445.0" prefWidth="1022.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manage.controller.LichHocController">
+    <GridPane fx:id="bang_TKB" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="1022.0">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+              <!-- Cột thứ 1 -->
+              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="58.0" style="-fx-background-color: #ad251f;" text="TKB" textFill="WHITE">
+               <font>
+                  <Font name="Montserrat Medium" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+         <children>
+      
+                                      <!-- Tiêu đề cột -->
+              <Label alignment="CENTER" prefHeight="35.0" prefWidth="79.0" style="-fx-background-color: #ad251f;" text="Thứ 2" textFill="WHITE">
+               <font>
+                  <Font name="Arial Unicode MS" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+         <children>
+              <Label alignment="CENTER" prefHeight="35.0" prefWidth="79.0" style="-fx-background-color: #ad251f;" text="Thứ 3" textFill="WHITE">
+               <font>
+                  <Font name="Arial Unicode MS" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
+         <children>
+              <Label alignment="CENTER" prefHeight="35.0" prefWidth="79.0" style="-fx-background-color: #ad251f;" text="Thứ 4" textFill="WHITE">
+               <font>
+                  <Font name="Arial Unicode MS" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
+         <children>
+              <Label alignment="CENTER" prefHeight="35.0" prefWidth="79.0" style="-fx-background-color: #ad251f;" text="Thứ 5" textFill="WHITE">
+               <font>
+                  <Font name="Arial Unicode MS" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5">
+         <children>
+              <Label alignment="CENTER" layoutX="1.0" prefHeight="35.0" prefWidth="79.0" style="-fx-background-color: #ad251f;" text="Thứ 6" textFill="WHITE">
+               <font>
+                  <Font name="Arial Unicode MS" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6">
+         <children>
+              <Label alignment="CENTER" prefHeight="35.0" prefWidth="79.0" style="-fx-background-color: #ad251f;" text="Thứ 7" textFill="WHITE">
+               <font>
+                  <Font name="Arial Unicode MS" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7">
+         <children>
+            <Label alignment="CENTER" prefHeight="35.0" prefWidth="66.0" style="-fx-background-color: #ad251f;" text="TGian" textFill="WHITE">
+               <font>
+                  <Font name="Arial Unicode MS" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+         <children>
+      
+              <!-- Tiêu đề hàng -->
+              <Label alignment="CENTER" prefHeight="56.0" prefWidth="58.0" style="-fx-background-color: #ad251f;" text="Tiết 1" textFill="WHITE">
+               <font>
+                  <Font name="Arial Unicode MS" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+         <children>
+              <Label alignment="CENTER" prefHeight="56.0" prefWidth="58.0" style="-fx-background-color: #ad251f;" text="Tiết 2" textFill="WHITE">
+               <font>
+                  <Font name="Arial Unicode MS" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+         <children>
+              <Label alignment="CENTER" prefHeight="56.0" prefWidth="58.0" style="-fx-background-color: #ad251f;" text="Tiết 3" textFill="WHITE">
+               <font>
+                  <Font name="Arial Unicode MS" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+         <children>
+              <Label alignment="CENTER" prefHeight="56.0" prefWidth="58.0" style="-fx-background-color: #ad251f;" text="Tiết 4" textFill="WHITE">
+               <font>
+                  <Font name="Arial Unicode MS" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
+         <children>
+              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="56.0" prefWidth="58.0" style="-fx-background-color: #ad251f;" text="Tiết 5" textFill="WHITE">
+               <font>
+                  <Font name="Arial Unicode MS" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="0.0" prefWidth="58.0" GridPane.rowIndex="6">
+         <children>
+              <Label alignment="CENTER" layoutY="-3.0" prefHeight="60.0" prefWidth="58.0" style="-fx-background-color: #ad251f;" text="Tiết 6" textFill="WHITE">
+               <font>
+                  <Font name="Arial Unicode MS" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="2">
+         <children>
+            <Label alignment="CENTER" prefHeight="57.0" prefWidth="65.1" style="-fx-background-color: #ad251f;" text="09 : 00" textFill="WHITE">
+               <font>
+                  <Font name="Arial Unicode MS" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="1">
+         <children>
+            <Label alignment="CENTER" prefHeight="57.0" prefWidth="65.1" style="-fx-background-color: #ad251f;" text="07 : 00" textFill="WHITE">
+               <font>
+                  <Font name="Arial Unicode MS" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="3">
+         <children>
+            <Label alignment="CENTER" prefHeight="57.0" prefWidth="65.1" style="-fx-background-color: #ad251f;" text="12 : 00" textFill="WHITE">
+               <font>
+                  <Font name="Arial Unicode MS" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="4">
+         <children>
+            <Label alignment="CENTER" layoutY="1.0" prefHeight="57.0" prefWidth="66.0" style="-fx-background-color: #ad251f;" text="14 : 00" textFill="WHITE">
+               <font>
+                  <Font name="Arial Unicode MS" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="5">
+         <children>
+            <Label alignment="CENTER" layoutY="3.0" prefHeight="57.0" prefWidth="65.1" style="-fx-background-color: #ad251f;" text="16 : 00" textFill="WHITE">
+               <font>
+                  <Font name="Arial Unicode MS" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="6">
+         <children>
+            <Label alignment="CENTER" layoutY="2.0" prefHeight="56.0" prefWidth="66.0" style="-fx-background-color: #ad251f;" text="18 : 00" textFill="WHITE">
+               <font>
+                  <Font name="Arial Unicode MS" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="6" />
+      <columnConstraints>
+         <ColumnConstraints maxWidth="59.0" minWidth="35.0" prefWidth="59.0" />
+         <ColumnConstraints maxWidth="87.0" minWidth="-Infinity" prefWidth="78.0" />
+         <ColumnConstraints maxWidth="109.0" minWidth="34.0" prefWidth="78.0" />
+         <ColumnConstraints maxWidth="131.0" minWidth="35.0" prefWidth="78.0" />
+         <ColumnConstraints maxWidth="144.0" minWidth="36.0" prefWidth="78.0" />
+         <ColumnConstraints maxWidth="213.0" minWidth="37.0" prefWidth="78.0" />
+         <ColumnConstraints maxWidth="263.0" minWidth="76.0" prefWidth="78.0" />
+         <ColumnConstraints maxWidth="263.0" minWidth="57.0" prefWidth="66.0" />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints minHeight="30.0" />
+         <RowConstraints maxHeight="60.0" minHeight="-Infinity" prefHeight="56.0" />
+         <RowConstraints maxHeight="64.0" minHeight="-Infinity" prefHeight="56.0" />
+         <RowConstraints maxHeight="69.0" minHeight="-Infinity" prefHeight="56.0" />
+         <RowConstraints maxHeight="82.0" minHeight="-Infinity" prefHeight="56.0" />
+         <RowConstraints maxHeight="99.0" minHeight="-Infinity" prefHeight="56.0" />
+         <RowConstraints maxHeight="109.0" minHeight="-Infinity" prefHeight="56.0" />
+      </rowConstraints>
+
+        <!-- Các ô khác tương tự -->
+
+    </GridPane>
+</VBox>

@@ -85,7 +85,7 @@
                                                 </ImageView>
                                             </graphic>
                                         </Button>
-                                        <Button fx:id="thongke" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#sinhvienAction" prefHeight="40.0" prefWidth="220.0" styleClass="selectable" text="Thống kê" textFill="#b72323">
+                                        <Button fx:id="thongke" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#thongkeAction" prefHeight="40.0" prefWidth="220.0" styleClass="selectable" text="Thống kê" textFill="#b72323">
                                             <font>
                                                 <Font name="#9Slide03 Open Sans SemiBold" size="16.0" />
                                             </font>
@@ -97,18 +97,18 @@
                                                 </ImageView>
                                             </graphic>
                                         </Button>
-                              <Button fx:id="nhantin1" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#nhantinAction" prefHeight="40.0" prefWidth="220.0" styleClass="selectable" stylesheets="@Main.css" text="Nhắn Tin" textFill="#b72323">
-                                 <font>
-                                    <Font name="#9Slide03 Open Sans SemiBold" size="16.0" />
-                                 </font>
-                                 <graphic>
-                                    <ImageView cache="true" fitHeight="27.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Image/home.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
+                                        <Button fx:id="nhantin1" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#nhantinAction" prefHeight="40.0" prefWidth="220.0" styleClass="selectable" stylesheets="@Main.css" text="Nhắn Tin" textFill="#b72323">
+                                            <font>
+                                                <Font name="#9Slide03 Open Sans SemiBold" size="16.0" />
+                                            </font>
+                                            <graphic>
+                                                <ImageView cache="true" fitHeight="27.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@../Image/home.png" />
+                                                    </image>
+                                                </ImageView>
+                                            </graphic>
+                                        </Button>
                                         <Button fx:id="tailieu" onAction="#tailieuAction" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="20.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" styleClass="selectable" stylesheets="@Main.css" text="Tài liệu" textFill="#b72323">
                                             <font>
                                                 <Font name="#9Slide03 Open Sans SemiBold" size="16.0" />

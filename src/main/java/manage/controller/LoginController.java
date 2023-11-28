@@ -54,7 +54,7 @@ public class LoginController implements Initializable {
             status.setText("Vui lòng nhập đầy đủ thông tin!");
             statusPause();
         } else {
-            String sql = "SELECT maSv, tenSv FROM java_project.users WHERE maSv = '" + name + "' AND tenSv = '" + pass + "'";
+            String sql = "SELECT * FROM demo.users WHERE id_user = '" + name + "' AND mk = '" + pass + "'";
             connection = ConnectDatabase.connect();
             try {
                 statement = connection.createStatement();

@@ -1,0 +1,132 @@
+.user-bg {
+    -fx-background-color: linear-gradient(to bottom right, #0d89be, #e04db9);
+}
+
+.userHomeButton {
+    -fx-background-color: linear-gradient(to bottom right, #0987ef, #e337ea);
+    -fx-background-radius: 15px;
+}
+
+.userHomeButton:hover {
+    -fx-background-color: linear-gradient(to bottom right, #1b69b0, #b11db6);
+    -fx-text-fill: #aeeef3;
+    -fx-border-radius: 10px;
+
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-transition-duration: 0.1s;
+}
+
+.userHomeButton:pressed {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-transition-duration: 0.1s;
+}
+
+.hyperLink:hover {
+    -fx-text-fill: #ff0000;
+    -fx-underline: true;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-transition-duration: 0.1s;
+}
+
+.hyperlink:pressed {
+    -fx-border-color: transparent;
+}
+
+.totalStudent {
+    -fx-background-color: linear-gradient(to bottom right, #66afec, #385fe8);
+    -fx-background-radius: 20px;
+}
+
+.totalStudent:pressed {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-transition-duration: 0.1s;
+}
+
+.totalStudent:hover {
+    -fx-background-color: linear-gradient(to bottom right, #349eea, #113fe5);
+    -fx-border-radius: 25px;
+
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-transition-duration: 0.1s;
+}
+
+.totalItStudents {
+    -fx-background-color: linear-gradient(to bottom right, #8c48bd, #da38cd);
+    -fx-background-radius: 20px;
+}
+
+.totalItStudents:pressed {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-transition-duration: 0.1s;
+}
+
+.totalItStudents:hover {
+    -fx-background-color: linear-gradient(to bottom right, #ab2ab6, #d51cb5);
+    -fx-border-radius: 25px;
+
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-transition-duration: 0.1s;
+}
+
+.courseButton{
+    -fx-background-color: linear-gradient(to bottom right, #b9e760, #13ce39);
+    -fx-background-radius: 20px;
+}
+
+.courseButton:pressed {
+    -fx-color: linear-gradient(to bottom right, #b9e760, #13ce39);
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-transition-duration: 0.1s;
+}
+
+.totalGraduated {
+    -fx-background-color: linear-gradient(to bottom right, #b9e760, #13ce39);
+    -fx-background-radius: 20px;
+}
+
+.totalGraduated:pressed {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-transition-duration: 0.1s;
+}
+
+.totalGraduated:hover {
+    -fx-background-color: linear-gradient(to bottom right, #a3e145, #02cb28);
+    -fx-border-radius: 25px;
+
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-transition-duration: 0.1s;
+}
+
+.totalAtStudents {
+    -fx-background-color: linear-gradient(to bottom right, #e884a7, #ea3b3b);
+    -fx-background-radius: 20px;
+}
+
+.totalAtStudents:pressed {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-transition-duration: 0.1s;
+}
+
+.totalAtStudents:hover {
+    -fx-background-color: linear-gradient(to bottom right, #e56592, #e71f1f);
+    -fx-border-radius: 25px;
+
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-transition-duration: 0.1s;
+}
+
+.imageLayout {
+    -fx-border-radius: 30px;
+}

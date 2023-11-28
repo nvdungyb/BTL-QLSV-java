@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="1813.0" prefWidth="1072.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manage.controller.ThongKeController">
+    <AnchorPane fx:id="containt" prefHeight="1549.0" prefWidth="1074.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+        <children>
+            <AnchorPane layoutY="35.0" prefHeight="128.0" prefWidth="1020.0" styleClass="user-bg" stylesheets="@UserDesign.css">
+                <children>
+                    <Label layoutX="119.0" layoutY="14.0" prefHeight="43.0" prefWidth="706.0" text="Posts and Telecommunications Institute of Technology" textFill="WHITE">
+                        <font>
+                            <Font size="29.0" />
+                        </font>
+                    </Label>
+                </children>
+            </AnchorPane>
+            <AnchorPane layoutY="186.0" prefHeight="1562.0" prefWidth="1072.0" stylesheets="@UserDesign.css">
+                <children>
+                    <AnchorPane layoutX="60.0" layoutY="41.0" prefHeight="116.0" prefWidth="250.0" styleClass="totalStudent" stylesheets="@UserDesign.css">
+                        <children>
+                            <Label layoutX="26.0" layoutY="29.0" prefHeight="26.0" prefWidth="96.0" text="Total Students" textFill="WHITE">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </Label>
+                            <Label fx:id="totalStudent" layoutX="125.0" layoutY="58.0" prefHeight="26.0" prefWidth="96.0" textFill="WHITE">
+                                <font>
+                                    <Font name="Times New Roman" size="15.0" />
+                                </font>
+                            </Label>
+                        </children>
+                    </AnchorPane>
+                    <AnchorPane layoutX="385.0" layoutY="41.0" prefHeight="116.0" prefWidth="250.0" styleClass="totalGraduated" stylesheets="@UserDesign.css">
+                        <children>
+                            <Label layoutX="26.0" layoutY="29.0" prefHeight="26.0" prefWidth="122.0" text="Total Course" textFill="WHITE">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </Label>
+                            <Label fx:id="totalCourse" layoutX="140.0" layoutY="60.0" prefHeight="26.0" prefWidth="96.0" textFill="WHITE">
+                                <font>
+                                    <Font name="Times New Roman" size="15.0" />
+                                </font>
+                            </Label>
+                        </children>
+                    </AnchorPane>
+                    <AnchorPane layoutX="60.0" layoutY="215.0" prefHeight="116.0" prefWidth="250.0" styleClass="totalItStudents" stylesheets="@UserDesign.css">
+                        <children>
+                            <Label layoutX="26.0" layoutY="29.0" prefHeight="26.0" prefWidth="112.0" text="Total Class" textFill="WHITE">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </Label>
+                            <Label fx:id="totalClass" layoutX="124.0" layoutY="58.0" prefHeight="26.0" prefWidth="96.0" textFill="WHITE">
+                                <font>
+                                    <Font name="Times New Roman" size="15.0" />
+                                </font>
+                            </Label>
+                        </children>
+                    </AnchorPane>
+                    <AnchorPane layoutX="708.0" layoutY="41.0" prefHeight="116.0" prefWidth="250.0" styleClass="totalAtStudents" stylesheets="@UserDesign.css">
+                        <children>
+                            <Label layoutX="31.0" layoutY="32.0" prefHeight="26.0" prefWidth="121.0" text="Total Lecturer" textFill="WHITE">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </Label>
+                            <Label fx:id="totalLecturer" layoutX="140.0" layoutY="58.0" prefHeight="26.0" prefWidth="96.0" textFill="WHITE">
+                                <font>
+                                    <Font name="Times New Roman" size="15.0" />
+                                </font>
+                            </Label>
+                        </children>
+                    </AnchorPane>
+                    <PieChart fx:id="pieChart" layoutX="573.0" layoutY="217.0" prefHeight="268.0" prefWidth="307.0" stylesheets="@PieChart.css" />
+                    <Label fx:id="infoLabel" layoutX="513.0" layoutY="305.0" prefHeight="26.0" prefWidth="122.0" text="InforPieChart">
+                        <font>
+                            <Font size="16.0" />
+                        </font>
+                    </Label>
+                    <Label layoutX="635.0" layoutY="507.0" prefHeight="35.0" prefWidth="301.0" text="Biểu đồ tỉ lệ giới tính của sinh viên học viện">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </Label>
+                    <Button fx:id="target1" layoutX="292.0" layoutY="409.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="146.0" text="Button" />
+                    <Button layoutX="173.0" layoutY="1239.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="119.0" text="Button" />
+                    <AnchorPane layoutY="692.0" prefHeight="418.0" prefWidth="1072.0">
+                        <children>
+                            <AnchorPane layoutX="8.0" prefHeight="64.0" prefWidth="250.0" styleClass="totalGraduated" stylesheets="@UserDesign.css">
+                                <children>
+                                    <Label layoutX="64.0" layoutY="24.0" prefHeight="17.0" prefWidth="122.0" text="Thống kê môn học" />
+                                </children>
+                            </AnchorPane>
+                            <TableView fx:id="courseTable" layoutX="14.0" layoutY="103.0" prefHeight="390.0" prefWidth="526.0">
+                                <columns>
+                                    <TableColumn fx:id="check" prefWidth="51.0" text="Check" />
+                                    <TableColumn fx:id="courseId" prefWidth="152.0" text="Mã môn" />
+                                    <TableColumn fx:id="courseName" minWidth="0.0" prefWidth="248.0" text="Tên môn" />
+                                    <TableColumn fx:id="soTinChi" prefWidth="73.0" text="Số tc" />
+                                </columns>
+                            </TableView>
+                            <PieChart fx:id="coursePieChart" layoutX="564.0" layoutY="45.0" prefHeight="450.0" prefWidth="503.0" stylesheets="@PieChart.css" />
+                            <Label fx:id="courseLabel" layoutX="555.0" layoutY="52.0" prefHeight="25.0" prefWidth="96.0" text="Tỉ lệ:">
+                                <font>
+                                    <Font size="16.0" />
+                                </font>
+                            </Label>
+                            <Label fx:id="totalStudentCourse" layoutX="747.0" layoutY="7.0" prefHeight="25.0" prefWidth="182.0" text="Tổng sinh viên: ">
+                                <font>
+                                    <Font size="16.0" />
+                                </font>
+                            </Label>
+                        </children>
+                    </AnchorPane>
+                    <Button fx:id="courseButton" layoutX="60.0" layoutY="395.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="156.0" styleClass="courseButton" stylesheets="@UserDesign.css" text="Course Button" textFill="WHITE" />
+                </children>
+            </AnchorPane>
+        </children>
+    </AnchorPane>
+</VBox>

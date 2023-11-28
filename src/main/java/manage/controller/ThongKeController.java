@@ -7,16 +7,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import manage.data.BangDiem;
 import manage.data.MonHoc;
-import manage.data.SinhVien;
 import manage.database.ConnectDatabase;
 
 import java.net.URL;
@@ -57,6 +54,32 @@ public class ThongKeController implements Initializable {
     private Label courseLabel;
     @FXML
     private Label totalStudentCourse;
+    @FXML
+    private Label detailTranscrip, detailStudentTranscrip;
+    @FXML
+    private TableView listTable, detailTable;
+    @FXML
+    private TableColumn<BangDiem, String> maSv, maSv1;
+    @FXML
+    private TableColumn<BangDiem, String> tenSv, tenSv1;
+    @FXML
+    private TableColumn<BangDiem, Double> chuyenCan, chuyenCan1;
+    @FXML
+    private TableColumn<BangDiem, Double> giuaKy, giuaKy1;
+    @FXML
+    private TableColumn<BangDiem, Double> cuoiKy, cuoiKy1;
+    @FXML
+    private TableColumn<BangDiem, Double> tongKet10, tongKet101;
+    @FXML
+    private TableColumn<BangDiem, Double> tongKet4, tongKet41;
+    @FXML
+    private TableColumn<BangDiem, String> diemChu, diemChu1;
+    @FXML
+    private TableColumn<BangDiem, Integer> ky;
+    @FXML
+    private Button detailSearch;
+    @FXML
+    private TextField detailMaSv;
 
     @FXML
     private Button courseButton;
@@ -103,11 +126,6 @@ public class ThongKeController implements Initializable {
             total += data.getPieValue();
         }
         return total;
-    }
-
-    public void handleStudentsButton(ActionEvent event) {
-        MainController.setAutoScroll(true);
-        MainController.setTarget(0.8);
     }
 
     public void drawCoursePieChart(Connection con, String maMon) {
@@ -157,10 +175,56 @@ public class ThongKeController implements Initializable {
                 });
             });
 
-            totalStudentCourse.setText("Tổng sinh viên: " + (int)getTotal(coursePieChart));
+            totalStudentCourse.setText("Tổng sinh viên: " + (int) getTotal(coursePieChart));
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void detailStudentTranScrip(String MASV) {
+        ArrayList<BangDiem> detailList = new ArrayList<>();
+
+        try {
+            Connection con = ConnectDatabase.connect();
+            Statement statement = con.createStatement();
+            String sql = "SELECT monhoc.id_mh, monhoc.ten_mh , diemcc, diemgk, diemck, diemTK10, diemTK4, kieu_chu, ky FROM java_project.sv_mh, java_project.sinhvien, java_project.monhoc WHERE sinhvien.id_sv = '" + MASV + "' AND java_project.sinhvien.id_sv = java_project.sv_mh.id_sv AND java_project.monhoc.id_mh = java_project.sv_mh.id_mh;";
+            System.out.println(sql);
+
+            ResultSet result = statement.executeQuery(sql);
+            while (result.next()) {
+                String maMon = result.getString("id_mh");
+                String tenMon = result.getString("ten_mh");
+                double diemCC = Double.parseDouble(result.getString("diemcc"));
+                double diemGK = Double.parseDouble(result.getString("diemgk"));
+                double diemCK = Double.parseDouble(result.getString("diemck"));
+                double diemTK10 = Double.parseDouble(result.getString("diemTK10"));
+                double diemTK4 = Double.parseDouble(result.getString("diemTK4"));
+                String diemChu = result.getString("kieu_chu");
+                int ky = Integer.parseInt(result.getString("ky"));
+                BangDiem bd = new BangDiem(maMon, tenMon, diemCC, diemGK, diemCK, diemTK10, diemTK4, diemChu, ky);
+                detailList.add(bd);
+            }
+
+            maSv1.setCellValueFactory(new PropertyValueFactory<>("maSv"));
+            tenSv1.setCellValueFactory(new PropertyValueFactory<>("tenSv"));
+            chuyenCan1.setCellValueFactory(new PropertyValueFactory<>("diemChuyenCan"));
+            giuaKy1.setCellValueFactory(new PropertyValueFactory<>("diemGiuaKy"));
+            cuoiKy1.setCellValueFactory(new PropertyValueFactory<>("diemCuoiKy"));
+            tongKet101.setCellValueFactory(new PropertyValueFactory<>("diemTongKet10"));
+            tongKet41.setCellValueFactory(new PropertyValueFactory<>("diemTongKet4"));
+            diemChu1.setCellValueFactory(new PropertyValueFactory<>("diemChu"));
+            ky.setCellValueFactory(new PropertyValueFactory<>("ky"));
+
+            ObservableList<BangDiem> dataDetail = FXCollections.observableArrayList(detailList);
+            detailTable.setItems(dataDetail);
+            detailTable.setEditable(true);
+            detailTable.refresh();
+
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override
@@ -221,13 +285,16 @@ public class ThongKeController implements Initializable {
         }
 
         if (courseButton != null) {
-            courseButton.setOnAction(this::handleStudentsButton);
+            courseButton.setOnAction(event ->{
+                MainController.setAutoScroll(true);
+                MainController.setTarget(0.8);
+            });
         }
 
         if (target1 != null) {
             target1.setOnAction(event -> {
                 MainController.setAutoScroll(true);
-                MainController.setTarget(1);
+                MainController.setTarget(0.512);
             });
         }
 
@@ -244,7 +311,6 @@ public class ThongKeController implements Initializable {
                     String tenMon = resultSet.getString("ten_mh");
                     int soTinChi = Integer.parseInt(resultSet.getString("sotc"));
                     MonHoc mh = new MonHoc(tenMon, maMon, soTinChi);
-                    System.out.println(mh);
                     ls.add(mh);
                 }
 
@@ -278,15 +344,89 @@ public class ThongKeController implements Initializable {
                         SimpleBooleanProperty currStatus = mh.getCheckBox();
                         mh.setCheckBox(!currStatus.get());
                         courseTable.refresh();
+                        detailTranscrip.setText("Bảng điểm chi tiết của môn: " + mh.getMaMon());
 
                         drawCoursePieChart(con, mh.getMaMon());
+
+                        ArrayList<BangDiem> list = new ArrayList<>();
+                        try {
+                            String query = "SELECT sinhvien.id_sv, ten_sv, diemcc, diemgk, diemck, diemTK10, diemTK4, kieu_chu FROM java_project.sv_mh, java_project.sinhvien WHERE id_mh = '" + mh.getMaMon() + "' AND java_project.sinhvien.id_sv = java_project.sv_mh.id_sv;";
+                            System.out.println(query);
+                            ResultSet rs = statement.executeQuery(query);
+                            while (rs.next()) {
+                                String maSv = rs.getString("id_sv");
+                                String tenSv = rs.getString("ten_sv");
+                                double diemCC = Double.parseDouble(rs.getString("diemcc"));
+                                double diemGK = Double.parseDouble(rs.getString("diemgk"));
+                                double diemCK = Double.parseDouble(rs.getString("diemck"));
+                                double diemTK10 = Double.parseDouble(rs.getString("diemTK10"));
+                                double diemTK4 = Double.parseDouble(rs.getString("diemTK4"));
+                                String diemChu = rs.getString("kieu_chu");
+                                BangDiem bd = new BangDiem(maSv, tenSv, diemCC, diemGK, diemCK, diemTK10, diemTK4, diemChu);
+                                list.add(bd);
+                            }
+
+                            maSv.setCellValueFactory(new PropertyValueFactory<>("maSv"));
+                            tenSv.setCellValueFactory(new PropertyValueFactory<>("tenSv"));
+                            chuyenCan.setCellValueFactory(new PropertyValueFactory<>("diemChuyenCan"));
+                            giuaKy.setCellValueFactory(new PropertyValueFactory<>("diemGiuaKy"));
+                            cuoiKy.setCellValueFactory(new PropertyValueFactory<>("diemCuoiKy"));
+                            tongKet10.setCellValueFactory(new PropertyValueFactory<>("diemTongKet10"));
+                            tongKet4.setCellValueFactory(new PropertyValueFactory<>("diemTongKet4"));
+                            diemChu.setCellValueFactory(new PropertyValueFactory<>("diemChu"));
+
+                            ObservableList<BangDiem> dataListTable = FXCollections.observableArrayList(list);
+                            listTable.setItems(dataListTable);
+                            listTable.setEditable(true);
+                            listTable.refresh();
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
+        listTable.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 1) {
+                BangDiem bd = (BangDiem) listTable.getSelectionModel().getSelectedItem();
+                detailStudentTranscrip.setText("Bảng điểm chi tiết của sinh viên:  " + bd.getMaSv() + "  -  " + bd.getTenSv());
 
+                detailStudentTranScrip(bd.getMaSv());
+            }
+        });
+
+        if (detailSearch != null) {
+            detailSearch.setOnAction(event -> {
+                String maSv = detailMaSv.getText().trim();
+                if (!maSv.equals("")) {
+                    detailStudentTranScrip(maSv);
+
+                    try {
+                        Connection con = ConnectDatabase.connect();
+                        Statement statement = con.createStatement();
+                        String sql = "SELECT * FROM java_project.sinhvien WHERE id_sv = '" + maSv + "';";
+                        ResultSet rs = statement.executeQuery(sql);
+                        if (rs.next()) {
+                            String tenSv = rs.getString("ten_sv");
+                            detailStudentTranscrip.setText("Bảng điểm chi tiết của sinh viên:  " + maSv + "  -  " + tenSv);
+                        }
+
+                        con.close();
+                    }catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setHeaderText(null);
+                    alert.setContentText("Vui lòng nhập mã sinh viên");
+                    alert.showAndWait();
+                }
+            });
+        }
     }
 }

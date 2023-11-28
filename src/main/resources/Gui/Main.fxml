@@ -7,31 +7,31 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="758.0" prefWidth="1285.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manage.controller.MainController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="880.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manage.controller.MainController">
     <content>
-        <VBox prefHeight="753.0" prefWidth="1280.0">
+        <VBox prefHeight="860.0" prefWidth="1366.0">
             <children>
-                <AnchorPane prefHeight="54.0" prefWidth="1280.0" style="-fx-background-color: #881337;">
+                <AnchorPane prefHeight="65.0" prefWidth="1280.0" style="-fx-background-color: #881337;">
                     <children>
                         <ImageView fitHeight="49.0" fitWidth="52.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../Image/Logo.png" />
                             </image>
                         </ImageView>
-                        <Label layoutX="393.0" layoutY="2.0" prefHeight="46.0" prefWidth="494.0" text="Posts and Telecommunications Institute of Technology" textFill="WHITE">
+                        <Label layoutX="436.0" layoutY="4.0" prefHeight="54.0" prefWidth="494.0" text="Posts and Telecommunications Institute of Technology" textFill="WHITE">
                             <font>
                                 <Font size="20.0" />
                             </font>
                         </Label>
                     </children>
                 </AnchorPane>
-                <HBox prefHeight="706.0" prefWidth="1280.0" spacing="20.0" style="-fx-background-color: white;">
+                <HBox prefHeight="804.0" prefWidth="1366.0" spacing="20.0" style="-fx-background-color: white;">
                     <children>
                         <VBox prefHeight="598.0" prefWidth="223.0" spacing="10.0" style="-fx-background-color: white;">
                             <children>
                                 <AnchorPane prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white;">
                                     <children>
-                                        <ImageView fitHeight="105.0" fitWidth="101.0" layoutX="1.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+                                        <ImageView fx:id="userImage" fitHeight="105.0" fitWidth="101.0" layoutX="1.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true"/>
                                         <Label fx:id="UserName" layoutX="29.0" layoutY="112.0" prefHeight="24.0" prefWidth="137.0" text="userName" />
                                         <Label layoutX="111.0" layoutY="38.0" prefHeight="20.0" prefWidth="82.0" style="-fx-text-fill: #7F1D1D;" text="Khoa CNTT">
                                             <font>
@@ -49,7 +49,7 @@
 <!--                                        <Insets />-->
 <!--                                    </VBox.margin>T-->
 <!--                                </Line>-->
-                                <VBox prefHeight="156.0" prefWidth="207.0" spacing="5.0">
+                                <VBox prefHeight="233.0" prefWidth="208.0" spacing="5.0">
                                     <children>
                                         <Button fx:id="trangchu" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#trangchuAction" prefHeight="45.0" prefWidth="220.0" styleClass="selectable" text="Trang Chủ" textFill="#b72323">
                                             <font>
@@ -66,7 +66,7 @@
                                                 </ImageView>
                                             </graphic>
                                         </Button>
-                                        <Button fx:id="sinhvien" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#sinhvienAction" prefHeight="40.0" prefWidth="220.0" styleClass="selectable" text="Sinh Viên" textFill="#b72323">
+                                        <Button fx:id="sinhvien" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#sinhvienAction" prefHeight="45.0" prefWidth="220.0" styleClass="selectable" text="Sinh Viên" textFill="#b72323">
                                             <font>
                                                 <Font name="#9Slide03 Open Sans SemiBold" size="16.0" />
                                             </font>
@@ -78,7 +78,7 @@
                                                 </ImageView>
                                             </graphic>
                                         </Button>
-                                        <Button fx:id="thongke" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#thongkeAction" prefHeight="40.0" prefWidth="220.0" styleClass="selectable" text="Thống kê" textFill="#b72323">
+                                        <Button fx:id="thongke" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#thongkeAction" prefHeight="45.0" prefWidth="208.0" styleClass="selectable" text="Thống kê" textFill="#b72323">
                                             <font>
                                                 <Font name="#9Slide03 Open Sans SemiBold" size="16.0" />
                                             </font>
@@ -90,7 +90,7 @@
                                                 </ImageView>
                                             </graphic>
                                         </Button>
-                                        <Button fx:id="nhantin" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="20.0" mnemonicParsing="false" onAction="#nhantinAction" prefHeight="40.0" prefWidth="220.0" styleClass="selectable" stylesheets="@Main.css" text="Nhắn Tin" textFill="#b72323">
+                                        <Button fx:id="nhantin" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="20.0" mnemonicParsing="false" onAction="#nhantinAction" prefHeight="45.0" prefWidth="208.0" styleClass="selectable" stylesheets="@Main.css" text="Nhắn Tin" textFill="#b72323">
                                             <font>
                                                 <Font name="#9Slide03 Open Sans SemiBold" size="16.0" />
                                             </font>
@@ -116,7 +116,7 @@
                                         <Insets bottom="10.0" top="10.0" />
                                     </padding>
                                 </VBox>
-                                <VBox alignment="BOTTOM_CENTER" prefHeight="349.0" prefWidth="207.0" spacing="10.0" style="-fx-background-color: white;">
+                                <VBox alignment="BOTTOM_CENTER" prefHeight="417.0" prefWidth="206.0" spacing="10.0" style="-fx-background-color: white;">
                                     <children>
                                         <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" styleClass="selectable" text="Giới Thiệu" textFill="#b72323">
                                             <font>
@@ -130,7 +130,7 @@
                                                 </ImageView>
                                             </graphic>
                                         </Button>
-                                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" styleClass="selectable" text="Hỗ Trợ" textFill="#b72323">
+                                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="206.0" styleClass="selectable" text="Hỗ Trợ" textFill="#b72323">
                                             <font>
                                                 <Font name="#9Slide03 Open Sans SemiBold" size="16.0" />
                                             </font>
@@ -155,7 +155,7 @@
                                 <Blend />
                             </effect>
                         </VBox>
-                        <ScrollPane fx:id="container" hbarPolicy="NEVER" prefHeight="718.0" prefWidth="1038.0" stylesheets="@Main.css" />
+                        <ScrollPane fx:id="container" hbarPolicy="NEVER" prefHeight="804.0" prefWidth="1127.0" stylesheets="@Main.css" />
                     </children>
                 </HBox>
             </children>

@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import manage.data.HashMapStudent;
@@ -37,6 +38,8 @@ public class MainController implements Initializable {
     ScrollPane container;
     @FXML
     private Label UserName;
+    @FXML
+    private ImageView userImage;
 
     private static SimpleBooleanProperty autoScroll = new SimpleBooleanProperty(false);
     private static double targetScrollPane = 0;
@@ -82,6 +85,18 @@ public class MainController implements Initializable {
             String userName = LoginController.getUserName();
             UserName.setText(userName);
 
+            // Không hiển thị được ảnh nếu lấy từ cơ sở dữ liệu.
+            String urlImage = LoginController.getUrlImage();
+            System.out.println(urlImage);
+            try {
+//                Image image = new Image(getClass().getResource(urlImage).toExternalForm());
+//                System.out.println(urlImage);
+//                userImage.setImage(image);
+                userImage.setImage(new javafx.scene.image.Image("C://Users//acer//OneDrive//Pictures//IMG_20220526_192323.jpg"));
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
+
             ConnectDatabase con = new ConnectDatabase();
             Statement statement = con.connect().createStatement();
             String sql = "SELECT * FROM java_project.sinhvien;";
@@ -109,7 +124,7 @@ public class MainController implements Initializable {
 
         autoScroll.addListener((observable, oldValue, newValue) -> {
             if (newValue) {
-                double scrollTime = 1000;                                                               // Định thời gian cho thanh cuộn chạy.
+                double scrollTime = 800;                                                               // Định thời gian cho thanh cuộn chạy.
                 double target = targetScrollPane;                                                       // Định vị trí cuối cùng của thanh cuộn. (0.0 -> 1.0)
 
                 Timeline timeline = new Timeline(

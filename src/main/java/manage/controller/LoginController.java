@@ -33,6 +33,7 @@ public class LoginController implements Initializable {
     private Label status;
 
     public static String userNameLogin;
+    public static String urlImage;
 
     private Connection connection;
     private Statement statement;
@@ -48,24 +49,25 @@ public class LoginController implements Initializable {
 
     public void checkInfo() {
         String name = UserName.getText().trim();
-        String pass = Password.getText().trim();
+        String ma = Password.getText().trim();
 
-        if (name.equals("") || pass.equals("")) {
+        if (name.equals("") || ma.equals("")) {
             status.setText("Vui lòng nhập đầy đủ thông tin!");
             statusPause();
         } else {
-            String sql = "SELECT maSv, tenSv FROM java_project.users WHERE maSv = '" + name + "' AND tenSv = '" + pass + "'";
+            String sql = "SELECT * FROM java_project.users WHERE maSv = '" + ma + "' AND tenSv = '" + name + "'";
             connection = ConnectDatabase.connect();
             try {
                 statement = connection.createStatement();
                 resultSet = statement.executeQuery(sql);
 
                 if (resultSet.next()) {
-                    System.out.println(resultSet.getString(1) + " " + resultSet.getString(2));
+                    System.out.println(resultSet.getString(1) + " " + resultSet.getString(2) + " " + resultSet.getString(3));
                     status.setText("Đăng nhập thành công!");
                     statusPause();
 
                     userNameLogin = name;
+                    urlImage = resultSet.getString(3);
                     loginButton.getScene().getWindow().hide();
                     Parent root = FXMLLoader.load(getClass().getResource("/Gui/Main.fxml"));
                     Scene scene = new Scene(root);
@@ -95,6 +97,9 @@ public class LoginController implements Initializable {
 
     public static String getUserName() {
         return userNameLogin;
+    }
+    public static String getUrlImage(){
+        return urlImage;
     }
 
     public void handleLoginButton(ActionEvent event) {

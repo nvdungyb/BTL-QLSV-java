@@ -13,7 +13,7 @@
                         <Font name="#9Slide03 Open Sans SemiBold" size="16.0" />
                     </font>
                 </Label>
-                <Button fx:id="confirm" layoutX="959.0" layoutY="27.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="67.0" stylesheets="@them_sua.css" text="Xác nhận" textFill="WHITE" />
+                <Button fx:id="confirm" layoutX="959.0" layoutY="27.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="67.0" stylesheets="@sinhvien_sub.css" text="Xác nhận" textFill="WHITE" />
             <Button fx:id="show" layoutX="14.0" layoutY="44.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="213.0" text="Hiển thị danh sách sinh viên đã chọn." />
             <Label fx:id="statusConfirm" layoutX="268.0" layoutY="52.0" prefHeight="25.0" prefWidth="135.0" textFill="#881337">
                <font>

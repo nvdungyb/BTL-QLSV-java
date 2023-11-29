@@ -287,7 +287,7 @@ public class ThongKeController implements Initializable {
         if (courseButton != null) {
             courseButton.setOnAction(event -> {
                 MainController.setAutoScroll(true);
-                MainController.setTarget(0.8);
+                MainController.setTarget(0.81);
             });
         }
 

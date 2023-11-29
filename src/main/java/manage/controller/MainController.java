@@ -124,7 +124,7 @@ public class MainController implements Initializable {
 
         autoScroll.addListener((observable, oldValue, newValue) -> {
             if (newValue) {
-                double scrollTime = 800;                                                               // Định thời gian cho thanh cuộn chạy.
+                double scrollTime = 500;                                                               // Định thời gian cho thanh cuộn chạy.
                 double target = targetScrollPane;                                                       // Định vị trí cuối cùng của thanh cuộn. (0.0 -> 1.0)
 
                 Timeline timeline = new Timeline(

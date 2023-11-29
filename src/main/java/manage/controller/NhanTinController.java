@@ -115,18 +115,20 @@ public class NhanTinController implements Initializable {
                 check_S_C = 1;
                 System.out.println("Error creating server or server already exists" + check_S_C);
                 e.printStackTrace();
-                try {
 
-                    client = new Client(new Socket("localhost", 3379));
-                    client.receiveMessageFromServer(vbox_messages);
-                    System.out.println("CREAATED CLIENT" + check_S_C);
-
-                } catch (IOException ex) {
-                    check_S_C = 2;
-                    System.out.println("Error creating client (after the server is error):))))))))))))))))" + check_S_C);
-                    e.printStackTrace();
-
-                }
+                // Phải comment lại thì mới chạy được.
+//                try {
+//
+//                    client = new Client(new Socket("127.0.0.1", 3379));
+//                    client.receiveMessageFromServer(vbox_messages);
+//                    System.out.println("CREAATED CLIENT" + check_S_C);
+//
+//                } catch (IOException ex) {
+//                    check_S_C = 2;
+//                    System.out.println("Error creating client (after the server is error):))))))))))))))))" + check_S_C);
+//                    e.printStackTrace();
+//
+//                }
             }
         }).start();
 

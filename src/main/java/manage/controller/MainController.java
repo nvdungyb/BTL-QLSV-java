@@ -78,8 +78,8 @@ public class MainController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             trangChuContent = FXMLLoader.load(getClass().getResource("/Gui/HomePage_sub.fxml"));
-            sinhVienContent = FXMLLoader.load(getClass().getResource("/Gui/sinhVien_sub.fxml"));
-            nhanTinContent = FXMLLoader.load(getClass().getResource("/Gui/nhanTin_sub.fxml"));
+            sinhVienContent = FXMLLoader.load(getClass().getResource("/Gui/SinhVien_sub.fxml"));
+            nhanTinContent = FXMLLoader.load(getClass().getResource("/Gui/NhanTin_sub.fxml"));
             thongKeContent = FXMLLoader.load(getClass().getResource("/Gui/ThongKe.fxml"));
             container.setContent(trangChuContent);
             String userName = LoginController.getUserName();

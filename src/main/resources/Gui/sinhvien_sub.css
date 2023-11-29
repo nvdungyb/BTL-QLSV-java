@@ -1,0 +1,46 @@
+
+.Box{
+    -fx-pref-height: 60px;
+}
+.Box > TextField, DatePicker, ChoiceBox{
+    -fx-background-color: rgb(255, 255, 255);
+    -fx-pref-height: 40px;
+    -fx-pref-width: 320px;
+    -fx-text-fill: rgb(0, 0, 0);
+    -fx-font-size: 15px;
+    -fx-effect: dropshadow(two-pass-box, rgba(255, 0, 0, 0.5), 4, 0, 0, 0);
+    
+}
+.Box > Label{
+    -fx-text-fill: rgb(93, 15, 15);
+    -fx-pref-height: 30px;
+    -fx-pref-width: 90px;
+}
+
+.button{
+    -fx-background-color: linear-gradient(to bottom right, #b4c7de, #a8a8a8);
+    -fx-background-radius: 10px;
+}
+
+.button:hover{
+    -fx-background-color: linear-gradient(to bottom right, #b4c7de, #a8a8a8);
+    -fx-scale-x: 1.15;
+    -fx-scale-y: 1.15;
+}
+
+.button:armed{
+    -fx-background-color: linear-gradient(to bottom right, #b4c7de, #a8a8a8);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+
+.button-in-danh-sach{
+    -fx-background-color: linear-gradient(to bottom right, #0d89be, #e04db9);
+    -fx-border-radius: 20px;
+}
+
+.button-in-danh-sach:hover{
+    -fx-background-color: linear-gradient(to bottom right, #0d89be, #e04db9);
+    -fx-border-radius: 20px;
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="370.0" prefWidth="631.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manage.controller.CongViecController">
+   <children>
+      <Label prefHeight="49.0" prefWidth="202.0" text="Thêm Công Việc" textAlignment="CENTER">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <Label layoutX="14.0" layoutY="74.0" prefHeight="21.0" prefWidth="65.0" text="Mô tả:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="moTa" layoutX="130.0" layoutY="50.0" prefHeight="63.0" prefWidth="434.0" />
+      <Label layoutX="14.0" layoutY="177.0" prefHeight="21.0" prefWidth="76.0" text="Trạng thái:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="trangThai" layoutX="130.0" layoutY="163.0" prefHeight="49.0" prefWidth="434.0" />
+      <Label layoutX="14.0" layoutY="267.0" prefHeight="21.0" prefWidth="118.0" text="Ngày hoàn thành:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="ngayThang" layoutX="163.0" layoutY="262.0" prefHeight="30.0" prefWidth="174.0" />
+      <Button fx:id="submit" layoutX="474.0" layoutY="307.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="65.0" text="Submit">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

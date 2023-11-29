@@ -1,5 +1,6 @@
 package manage.controller;
 
+import javafx.application.Platform;
 import manage.database.ConnectDatabase;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
@@ -23,15 +24,16 @@ import java.sql.ResultSet;
 
 public class LoginController implements Initializable {
     @FXML
-    private PasswordField password;
+    private PasswordField Password;
     @FXML
-    public TextField userName;
+    public TextField UserName;
     @FXML
     private Button loginButton;
     @FXML
     private Label status;
 
     public static String userNameLogin;
+    public static String urlImage;
 
     private Connection connection;
     private Statement statement;
@@ -46,34 +48,50 @@ public class LoginController implements Initializable {
     }
 
     public void checkInfo() {
-        String name = userName.getText().trim();
-        String pass = password.getText().trim();
+        String name = UserName.getText().trim();
+        String ma = Password.getText().trim();
 
-        if (name.equals("") || pass.equals("")) {
+        if (name.equals("") || ma.equals("")) {
             status.setText("Vui lòng nhập đầy đủ thông tin!");
             statusPause();
         } else {
-            String sql = "SELECT maSv, tenSv FROM java_project.users WHERE maSv = '" + name + "' AND tenSv = '" + pass + "'";
+            String sql = "SELECT * FROM java_project.users WHERE maSv = '" + ma + "' AND tenSv = '" + name + "'";
             connection = ConnectDatabase.connect();
             try {
                 statement = connection.createStatement();
                 resultSet = statement.executeQuery(sql);
 
                 if (resultSet.next()) {
-                    System.out.println(resultSet.getString(1) + " " + resultSet.getString(2));
+                    System.out.println(resultSet.getString(1) + " " + resultSet.getString(2) + " " + resultSet.getString(3));
                     status.setText("Đăng nhập thành công!");
                     statusPause();
 
                     userNameLogin = name;
+                    urlImage = resultSet.getString(3);
                     loginButton.getScene().getWindow().hide();
                     Parent root = FXMLLoader.load(getClass().getResource("/Gui/Main.fxml"));
                     Scene scene = new Scene(root);
                     Stage stage = new Stage();
                     stage.setScene(scene);
+                    stage.setResizable(false);
+                    stage.setTitle("Phần mềm quản lý sinh viên");
                     stage.show();
+
+                    stage.setOnCloseRequest(event -> {
+                        Platform.exit();                            // Giải phóng tất cả tài nguyên của JavaFx và đóng tất cả các stage đang mở.
+                        System.exit(0);                       // Đóng tất cả các thread đang chạy. (Bởi vì phần chat có thể threads vẫn đang chạy).
+                    });
 
                 } else {
                     status.setText("Tên đăng nhập hoặc mật khẩu sai!");
+                    UserName.setStyle("-fx-border-color: red;");
+                    UserName.setOnKeyReleased(
+                            event -> UserName.setStyle("-fx-border-color: none;")
+                    );
+                    Password.setStyle("-fx-border-color: red;");
+                    Password.setOnKeyReleased(
+                            event -> Password.setStyle("-fx-border-color: none;")
+                    );
                     statusPause();
                 }
             } catch (Exception e) {
@@ -86,10 +104,20 @@ public class LoginController implements Initializable {
         return userNameLogin;
     }
 
+    public static String getUrlImage() {
+        return urlImage;
+    }
+
     public void handleLoginButton(ActionEvent event) {
         if (event.getSource() == loginButton) {
             System.out.println("Login button clicked!");
             checkInfo();
+
+            try {
+                connection.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

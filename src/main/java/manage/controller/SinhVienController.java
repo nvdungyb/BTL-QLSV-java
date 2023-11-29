@@ -1,8 +1,14 @@
 package manage.controller;
 
+import javafx.animation.PauseTransition;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import manage.database.ConnectDatabase;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+import manage.data.HashMapStudent;
 import manage.data.SinhVien;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import org.apache.poi.ss.usermodel.*;
@@ -18,16 +24,14 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class SinhVienController implements Initializable {
+    HashMap<String, SinhVien> hashMapStudent;
     @FXML
     private TableColumn<SinhVien, Boolean> check;
     @FXML
@@ -47,15 +51,36 @@ public class SinhVienController implements Initializable {
     @FXML
     private TextField randomSearch;
     @FXML
+    private ComboBox filter;
+    @FXML
     private Button exporter;
     @FXML
-    private Button add;
+    private Button sua;
     @FXML
-    private TextField checkMaSv;
+    private Button addStudent;
+    @FXML
+    private Button delete;
+    @FXML
+    private Button sapXep;
+    @FXML
+    private Button reset;
+    @FXML
+    private Label warning;
+
+    // static: thuộc tính của class, được chia sẻ cho tất cả các đối tượng của class.
+    // final : thuộc tính của đối tượng, không thể thay đổi giá trị của thuộc tính này.
+    // BooleanProperty: là lớp đại diện cho một giá trị boolean có thể thay đổi được trong javaFx.
+    // BooleanProperty sẽ tự động gọi đến các hàm listener đã đk khi giá trị của nó bị thay đổi => update UI một cách tự động.
+    private static BooleanProperty isDataChanged = new SimpleBooleanProperty(false);
+    private static SinhVien inforSv = null;
 
     private ArrayList<SinhVien> ls = new ArrayList<>();
     private ArrayList<SinhVien> checked = new ArrayList<>();
     HashMap<String, SinhVien> map = new HashMap<>();
+
+    @FXML
+    private Button hienThi;
+
 //    @FXML
 //    private TableColumn<SinhVien, String> gioiTinh;
 //    @FXML
@@ -63,70 +88,76 @@ public class SinhVienController implements Initializable {
 //    @FXML
 //    private TableColumn<SinhVien, String> sdt;
 
+    public void warningPause() {
+        PauseTransition delay = new PauseTransition(Duration.seconds(3));
+        delay.setOnFinished(even -> {
+            warning.setText("");
+        });
+        delay.play();
+    }
+
     public void handleSearch(ActionEvent event) {
-        if (event.getSource() == search) {
-            String WHERE = "";
-            String sql = "SELECT * FROM java_project.sinhvien" + WHERE;
 
-            String random = randomSearch.getText().trim();
+        String random = randomSearch.getText().trim();
+        String gender = "";
+        if (filter.getValue() != null) {
+            gender = filter.getValue().toString();
+            if (gender.equals("Tất cả"))
+                gender = "";
+        }
 
-            ls.clear();
-            try {
-                Connection connection = ConnectDatabase.connect();
-                Statement statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery(sql);
+        ls.clear();
+        hashMapStudent = HashMapStudent.getHashSinhVien();
 
-                while (resultSet.next()) {
-                    String maSv = resultSet.getString("id_sv");
-                    String tenSv = resultSet.getString("ten_sv");
-                    String ngaySinh = resultSet.getString("ngaysinh");
-                    String gioiTinh = resultSet.getString("gioitinh");
-                    String email = resultSet.getString("email");
-                    String sdt = resultSet.getString("sodt");
-                    String que = resultSet.getString("que");
-                    String lop = resultSet.getString("id_lhc");
+        for (String key : hashMapStudent.keySet()) {
+            SinhVien sv = hashMapStudent.get(key);
 
-                    SinhVien sv = new SinhVien(maSv, tenSv, ngaySinh, gioiTinh, email, sdt, que, lop);
-                    if (sv.getMaSv().contains(random) || sv.getTenSv().contains(random) || sv.getNgaySinh().contains(random) || sv.getGioiTinh().contains(random) || sv.getEmail().contains(random) || sv.getSdt().contains(random) || sv.getDiaChi().contains(random) || sv.getMaLop().contains(random)) {
-                        map.put(maSv, sv);
-                        ls.add(sv);
-                    }
-                }
-
-                // Tham số của PropertyValueFactory là của thuộc tính của SinhVien và thuộc tính này có phương thức getter.
-                // Thực hiện tạo ô chẹckBox cho mỗi hàng.
-                check.setCellValueFactory(new PropertyValueFactory<>("checkBox"));
-                check.setCellFactory((TableColumn<SinhVien, Boolean> p) -> {                                            // Phương thức setCellFactory để tạo các ô cho cột, cụ thể là cột check. Trong phương thức biểu thức lamda nhận một tableColumn và trả về một TableCell.
-                    CheckBoxTableCell<SinhVien, Boolean> cell = new CheckBoxTableCell<>();                              // Tạo một ô checkBox mới cho mỗi hàng.
-                    cell.setSelectedStateCallback(param -> {                                                            // Đặt trạng thái của ô checkBox cho mỗi hàng. Biểu thức lamda đặt một hàm gọi lại để xác định trạng thái được chọn của ô checkBox, hàm này gọi lại mỗi khi trạng thái của ô checkBox thay đổi.
-                        SinhVien sv = cell.getTableRow().getItem();                                                     // Lấy đối tượng SinhVien được liên kết với dòng hiện tại.
-                        return sv != null ? sv.getCheckBox() : null;                                                    // Trả về thuộc tính checkBox của đối tượng SinhVien.
-                    });
-                    return cell;
-                });
-                check.setEditable(true);
-//                                                                                                                      Tại sao dùng cách này thì không được?
-//                check.setCellValueFactory(new PropertyValueFactory<>("checkBox"));
-//                check.setCellFactory((CheckBoxTableCell.forTableColumn(check)));                                                                                                                                                                                                                                          Ta
-//                check.setEditable(true);
-
-                maSv.setCellValueFactory(new PropertyValueFactory<>("maSv"));
-                tenSv.setCellValueFactory(new PropertyValueFactory<>("tenSv"));
-                ngaySinh.setCellValueFactory(new PropertyValueFactory<>("ngaySinh"));
-                que.setCellValueFactory(new PropertyValueFactory<>("diaChi"));
-                lop.setCellValueFactory(new PropertyValueFactory<>("maLop"));
-
-                ObservableList<SinhVien> data = FXCollections.observableArrayList(ls);
-                tableShow.setItems(data);
-                tableShow.setEditable(true);
-
-            } catch (SQLException e) {
-                System.out.println(e.getMessage());
+            if (sv.getMaSv().contains(random) || sv.getTenSv().contains(random) || sv.getNgaySinh().contains(random) || sv.getGioiTinh().contains(random) || sv.getEmail().contains(random) || sv.getSdt().contains(random) || sv.getDiaChi().contains(random) || sv.getMaLop().contains(random)) {
+                if (sv.getGioiTinh().equals(gender) || gender.equals(""))
+                    ls.add(sv);
             }
+        }
+
+        // Tham số của PropertyValueFactory là của thuộc tính của SinhVien và thuộc tính này có phương thức getter.
+        // Thực hiện tạo ô chẹckBox cho mỗi hàng.
+        check.setCellValueFactory(new PropertyValueFactory<>("checkBox"));
+        check.setCellFactory((TableColumn<SinhVien, Boolean> p) -> {                                            // Phương thức setCellFactory để tạo các ô cho cột, cụ thể là cột check. Trong phương thức biểu thức lamda nhận một tableColumn và trả về một TableCell.
+            CheckBoxTableCell<SinhVien, Boolean> cell = new CheckBoxTableCell<>();                              // Tạo một ô checkBox mới cho mỗi hàng.
+            cell.setSelectedStateCallback(param -> {                                                            // Đặt trạng thái của ô checkBox cho mỗi hàng. Biểu thức lamda đặt một hàm gọi lại để xác định trạng thái được chọn của ô checkBox, hàm này gọi lại mỗi khi trạng thái của ô checkBox thay đổi.
+                SinhVien sv = cell.getTableRow().getItem();                                                     // Lấy đối tượng SinhVien được liên kết với dòng hiện tại.
+                return sv != null ? sv.getCheckBox() : null;                                                    // Trả về thuộc tính checkBox của đối tượng SinhVien.
+            });
+            return cell;
+        });
+        check.setEditable(true);
+
+        // Tên getter phải đúng thì mới tìm được thuộc tính của đối tượng nhé.
+        maSv.setCellValueFactory(new PropertyValueFactory<>("maSv"));
+        tenSv.setCellValueFactory(new PropertyValueFactory<>("tenSv"));
+        ngaySinh.setCellValueFactory(new PropertyValueFactory<>("ngaySinh"));
+        que.setCellValueFactory(new PropertyValueFactory<>("diaChi"));
+        lop.setCellValueFactory(new PropertyValueFactory<>("maLop"));
+
+        ObservableList<SinhVien> data = FXCollections.observableArrayList(ls);
+        tableShow.setItems(data);
+        tableShow.setEditable(true);
+        tableShow.refresh();
+    }
+
+    public void handleSort(ActionEvent event) {
+        if (event.getSource() == sapXep) {
+            ls.sort((SinhVien sv1, SinhVien sv2) -> {
+                return sv1.getMaSv().compareTo(sv2.getMaSv());
+            });
+
+            ObservableList<SinhVien> data = FXCollections.observableArrayList(ls);
+            tableShow.setItems(data);
+            tableShow.setEditable(true);
+            tableShow.refresh();
         }
     }
 
-    public void handerExporter(ActionEvent event) {
+    public void handlerExporter(ActionEvent event) {
         if (event.getSource() == exporter) {
 
             Workbook workbook = new XSSFWorkbook();
@@ -188,27 +219,120 @@ public class SinhVienController implements Initializable {
         }
     }
 
-    public void handleShow(ActionEvent event) {
-        if (event.getSource() == tableShow) {
-            SinhVien sv = (SinhVien) tableShow.getSelectionModel().getSelectedItem();
-            System.out.println(sv.getMaSv());
-            System.out.println(sv.getTenSv());
+    public void handleDelete(ActionEvent event) {
+        if (event.getSource() == delete) {
+            try {
+                Stage stage = new Stage();
+                Parent root = FXMLLoader.load(getClass().getResource("/Gui/ConfirmDelete.fxml"));
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
-//    public void handleCheck(ActionEvent event) {
-//        ObservableList<SinhVien> items = tableShow.getItems();
-//        for (SinhVien sv : items) {
-//            boolean checkedSv = sv.getCheckBox();
-//            if (checkedSv) {
-//                checked.add(sv);
-//            }
-//        }
-//
-//        for (SinhVien x : checked) {
-//            System.out.println(x);
-//        }
-//    }
+    public void handleChangeInfor(ActionEvent event) {
+        if (event.getSource() == sua) {
+            boolean ok = true;
+            int numStudent = 0;
+            for (SinhVien sv : ls) {
+                if (sv.getCheckBox().getValue() == true) {
+                    numStudent++;
+                    if (inforSv == null) {
+                        inforSv = sv;
+                    } else {
+                        inforSv = null;
+                        break;
+                    }
+                }
+            }
+
+            if (inforSv == null) {
+                if (numStudent > 1) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setHeaderText(null);
+                    alert.setContentText("Chỉ chọn 1 sinh viên để sửa thông tin!");
+                    alert.showAndWait();
+                } else if (numStudent == 0) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setHeaderText(null);
+                    alert.setContentText("Chưa chọn sinh viên để sửa thông tin!");
+                    alert.showAndWait();
+                }
+            }
+
+            if (numStudent == 1 && inforSv != null) {
+                try {
+                    Stage stage = new Stage();
+                    Parent root = FXMLLoader.load(getClass().getResource("/Gui/SuaThongTin.fxml"));
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            inforSv = null;
+        }
+    }
+
+    public void handleShowInfor(ActionEvent event) {
+        if (event.getSource() == hienThi) {
+            boolean ok = true;
+            int numStudent = 0;
+            for (SinhVien sv : ls) {
+                if (sv.getCheckBox().getValue() == true) {
+                    numStudent++;
+                    if (inforSv == null) {
+                        inforSv = sv;
+                    } else {
+                        inforSv = null;
+                        break;
+                    }
+                }
+            }
+
+            if (inforSv == null) {
+                if (numStudent > 1) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setHeaderText(null);
+                    alert.setContentText("Chỉ chọn 1 sinh viên để xem thông tin!");
+                    alert.showAndWait();
+                } else if (numStudent == 0) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setHeaderText(null);
+                    alert.setContentText("Chưa chọn sinh viên để xem thông tin!");
+                    alert.showAndWait();
+                }
+            }
+
+            if (numStudent == 1 && inforSv != null) {
+                try {
+                    Stage stage = new Stage();
+                    Parent root = FXMLLoader.load(getClass().getResource("/Gui/StudentInfor.fxml"));
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            inforSv = null;
+        }
+    }
+
+    public static void setIsChange(boolean check) {
+        isDataChanged.set(check);
+    }
+
+    public static SinhVien getInforSv() {
+        return inforSv;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -217,33 +341,70 @@ public class SinhVienController implements Initializable {
         }
 
         if (exporter != null) {
-            exporter.setOnAction(this::handerExporter);
+            exporter.setOnAction(this::handlerExporter);
         }
 
         if (tableShow != null) {
             tableShow.setOnMouseClicked(event -> {
-//                SinhVien sv = (SinhVien) tableShow.getSelectionModel().getSelectedItem();
-//                System.out.println(sv.getMaSv() + " " + sv.getTenSv() + " " + sv.getCheckBox());
-//                sv.setCheckBox(true);
-//                System.out.println(sv.getMaSv() + " " + sv.getTenSv() + " " + sv.getCheckBox());
-//
-//                BooleanProperty currStatus = sv.getCheckBox();
-//                sv.setCheckBox(!currStatus.get());
-//
-//                System.out.println(sv.getMaSv() + " " + sv.getTenSv() + " " + sv.getCheckBox());
-
                 if (event.getClickCount() == 1) {
                     SinhVien sv = (SinhVien) tableShow.getSelectionModel().getSelectedItem();
                     SimpleBooleanProperty currStatus = sv.getCheckBox();
                     sv.setCheckBox(!currStatus.get());
-                    System.out.println(sv.getMaSv() + " " + sv.getTenSv() + " " + sv.getCheckBox());
+                    System.out.println(sv.getMaSv() + " " + sv.getTenSv() + " " + sv.getDiaChi() + " " + sv.getSdt() + " " + sv.getCheckBox());
                     tableShow.refresh();
                 }
             });
         }
 
-        if (add != null) {
-//            add.setOnAction(this::handleCheck);
+        if (addStudent != null) {
+            addStudent.setOnAction(event -> {
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("/Gui/ThemSinhVien.fxml"));
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+        }
+
+        if (delete != null) {
+            delete.setOnAction(this::handleDelete);
+        }
+
+        if (sapXep != null) {
+            sapXep.setOnAction(this::handleSort);
+        }
+
+        // Thực hiện đồng bộ khi thực hiện xác nhận xóa thông tin sinh viên tableShowDel từ ConfirmDelete và tableShow của SinhVienController.
+        /*
+            observableValue: đại diện cho thuộc tính isDataChanged.
+            oldValue: giá trị cũ của thuộc tính isDataChanged.
+            newValue: giá trị mới của thuộc tính isDataChanged.
+         */
+        isDataChanged.addListener((observableValue, oldValue, newValue) -> {
+            if (newValue == true) {
+                handleSearch(new ActionEvent());
+                isDataChanged.set(false);
+            }
+        });
+
+        if (sua != null) {
+            sua.setOnAction(this::handleChangeInfor);
+        }
+
+        if (hienThi != null) {
+            hienThi.setOnAction(this::handleShowInfor);
+        }
+
+        if (reset != null) {
+            reset.setOnAction(event -> {
+               for(SinhVien sv : ls){
+                   sv.setCheckBox(false);
+               }
+            });
         }
     }
 }

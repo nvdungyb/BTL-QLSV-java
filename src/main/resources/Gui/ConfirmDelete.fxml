@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="481.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manage.controller.ConfirmDelete">
+    <children>
+        <AnchorPane prefHeight="87.0" prefWidth="1040.0" style="-fx-background-color: white; -fx-border-color: rgba(229, 231, 235, 1);">
+            <children>
+                <Label layoutX="14.0" layoutY="11.0" text="Xác nhận xóa!" textFill="#881337">
+                    <font>
+                        <Font name="#9Slide03 Open Sans SemiBold" size="16.0" />
+                    </font>
+                </Label>
+                <Button fx:id="confirm" layoutX="959.0" layoutY="27.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="67.0" stylesheets="@sinhvien_sub.css" text="Xác nhận" textFill="WHITE" />
+            <Button fx:id="show" layoutX="14.0" layoutY="44.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="213.0" text="Hiển thị danh sách sinh viên đã chọn." />
+            <Label fx:id="statusConfirm" layoutX="268.0" layoutY="52.0" prefHeight="25.0" prefWidth="135.0" textFill="#881337">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            </children>
+        </AnchorPane>
+        <VBox layoutY="86.0" prefHeight="395.0" prefWidth="1040.0">
+            <children>
+                <TableView fx:id="tableShowDel" fixedCellSize="0.0" prefHeight="397.0" prefWidth="1040.0">
+                    <columns>
+                        <TableColumn fx:id="checkDel" prefWidth="99.0" text="CheckBox">
+                        </TableColumn>
+                        <TableColumn fx:id="maSvDel" prefWidth="212.0" text="Mã sinh viên" />
+                        <TableColumn fx:id="tenSvDel" prefWidth="302.0" text="Họ và tên" />
+                        <TableColumn fx:id="lopDel" minWidth="6.4000244140625" prefWidth="142.0" text="Lớp" />
+                        <TableColumn fx:id="queDel" prefWidth="150.0" text="Quê quán" />
+                        <TableColumn fx:id="ngaySinhDel" prefWidth="134.0" text="Ngày sinh" />
+                    </columns>
+                </TableView>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

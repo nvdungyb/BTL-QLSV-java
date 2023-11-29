@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import manage.data.HashMapStudent;
 import manage.data.SinhVien;
 import manage.database.ConnectDatabase;
@@ -112,6 +113,9 @@ public class ConfirmDelete implements Initializable {
             System.out.println("Xóa thành công " + count + " trên " + size + " sinh viên");
             if (count > 0)
                 SinhVienController.setIsChange(true);
+
+            Stage stage = (Stage) confirm.getScene().getWindow();
+            stage.close();
         }
 
         ObservableList<SinhVien> updatedDate = FXCollections.observableArrayList(ls);

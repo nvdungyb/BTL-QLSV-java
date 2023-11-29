@@ -10,7 +10,7 @@
         <children>
             <AnchorPane layoutY="35.0" prefHeight="128.0" prefWidth="1150.0" styleClass="user-bg" stylesheets="@UserDesign.css">
                 <children>
-                    <Label layoutX="222.0" layoutY="14.0" prefHeight="43.0" prefWidth="706.0" text="Posts and Telecommunications Institute of Technology" textFill="WHITE">
+                    <Label layoutX="226.0" layoutY="14.0" prefHeight="43.0" prefWidth="698.0" text="Thống kê môn học và chi tiết bảng điểm của sinh viên" textFill="WHITE">
                         <font>
                             <Font size="29.0" />
                         </font>
@@ -86,7 +86,7 @@
                             <Font size="14.0" />
                         </font>
                     </Label>
-                    <Button fx:id="target1" layoutX="53.0" layoutY="506.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="156.0" styleClass="button-in-danh-sach" stylesheets="@sinhvien_sub.css" text="Button" />
+                    <Button fx:id="target1" layoutX="53.0" layoutY="506.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="156.0" styleClass="button-in-danh-sach" stylesheets="@sinhvien_sub.css" text="Tới thống kê môn học" />
                     <AnchorPane layoutY="692.0" prefHeight="1349.0" prefWidth="1150.0">
                         <children>
                             <AnchorPane layoutX="8.0" prefHeight="64.0" prefWidth="250.0" styleClass="totalGraduated" stylesheets="@UserDesign.css">
@@ -152,7 +152,7 @@
                      <TextField fx:id="detailMaSv" layoutX="915.0" layoutY="909.0" prefHeight="25.0" prefWidth="156.0" promptText="Mã sinh viên" />
                         </children>
                     </AnchorPane>
-                    <Button fx:id="courseButton" layoutX="53.0" layoutY="436.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="156.0" styleClass="courseButton" stylesheets="@UserDesign.css" text="Course Button" textFill="WHITE" />
+                    <Button fx:id="courseButton" layoutX="53.0" layoutY="436.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="156.0" styleClass="courseButton" stylesheets="@UserDesign.css" text="Tới chi tiết bảng điểm" />
                 </children>
             </AnchorPane>
         </children>

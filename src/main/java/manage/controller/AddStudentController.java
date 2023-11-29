@@ -97,7 +97,7 @@ public class AddStudentController implements Initializable {
                         statement.execute(sql);
 
                         // Nếu thêm sinh viên thành công thì cập nhật lại HashMap và reload tableView.
-                        SinhVien sv = new SinhVien(id, name, dob, address, mail, gender, phone, classId);
+                        SinhVien sv = new SinhVien(id, name, dob, gender, mail, phone, address, classId);
                         hashMapStudent.put(id, sv);
                         status.setText("Thêm thành công!");
                         SinhVienController.setIsChange(true);
